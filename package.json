@@ -1,6 +1,6 @@
 {
   "name": "serve-here",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "static server",
   "main": "index.js",
   "bin": {
