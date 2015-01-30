@@ -1,0 +1,19 @@
+{
+  "name": "here",
+  "version": "0.0.1",
+  "description": "local server",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('ok')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "null"
+  },
+  "keywords": [
+    "static",
+    "server"
+  ],
+  "author": "vivaxy",
+  "license": "MIT"
+}
