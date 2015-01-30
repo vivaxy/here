@@ -8,4 +8,4 @@ var mimeType = {
   'css': 'text/css'
 };
 
-module.exports = mimeType;
+exports = module.exports = mimeType;

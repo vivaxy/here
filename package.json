@@ -2,9 +2,8 @@
   "name": "serve-here",
   "version": "0.0.4",
   "description": "static server",
-  "main": "index.js",
   "bin": {
-    "serve": "./index.js"
+    "serve": "index.js"
   },
   "scripts": {
     "test": "console.log('ok')"

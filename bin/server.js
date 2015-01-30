@@ -27,8 +27,8 @@ var server = function () {
       res.end(data);
     });
   }).listen(8080);
-
+  console.log('server started at http://127.0.0.1:8080');
   exec('open http://127.0.0.1:8080');
 };
 
-module.exports = server;
+exports = module.exports = server;
