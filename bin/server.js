@@ -7,14 +7,15 @@ var http = require('http');
 var exec = require('child_process').exec;
 var mime = require('./mime');
 var debug = require('./debug');
+var path = require('path');
 
-var server = function(){
+var server = function () {
   http.createServer(function (req, res) {
     console.log(req.url);
     var extensionArray = req.url.split('.');
     var extension = extensionArray[extensionArray.length - 1];
     if (debug) console.log('extension', extension);
-    fs.readFile(__dirname + req.url, function (err, data) {
+    fs.readFile(path.join(process.cwd(), req.url), function (err, data) {
       if (err) {
         res.writeHead(404);
         res.end(JSON.stringify(err));
