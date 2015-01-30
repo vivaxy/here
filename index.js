@@ -1,3 +1,4 @@
+#!/usr/local/bin node
 /**
  * @since 150130 16:43
  * @author vivaxy
