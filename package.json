@@ -6,7 +6,7 @@
     "serve": "index.js"
   },
   "scripts": {
-    "test": "console.log('ok')"
+    "test": ""
   },
   "repository": {
     "type": "git",
