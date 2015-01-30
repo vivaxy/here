@@ -1,8 +1,11 @@
 {
-  "name": "here",
+  "name": "serve-here",
   "version": "0.0.1",
   "description": "static server",
   "main": "index.js",
+  "bin": {
+    "serve": "./index.js"
+  },
   "scripts": {
     "test": "console.log('ok')"
   },
@@ -15,5 +18,6 @@
     "server"
   ],
   "author": "vivaxy",
+  "email": "xyxuye2007@126.com",
   "license": "MIT"
 }
