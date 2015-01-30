@@ -1,14 +1,14 @@
 {
   "name": "here",
   "version": "0.0.1",
-  "description": "local server",
+  "description": "static server",
   "main": "index.js",
   "scripts": {
     "test": "console.log('ok')"
   },
   "repository": {
     "type": "git",
-    "url": "null"
+    "url": "https://github.com/vivaxy/here.git"
   },
   "keywords": [
     "static",
