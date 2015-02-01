@@ -27,7 +27,7 @@ var serve = function () {
         return;
       }
       res.writeHead(200, {
-        'Content-Type': mime[extension]
+        'Content-Type': mime[extension] || 'application/json; charset=utf-8'
       });
       res.end(data);
     });
@@ -36,7 +36,7 @@ var serve = function () {
 
   server.on('error', function (e) {
     if (e.code == 'EADDRINUSE') {
-      console.log('port in use!');
+      console.log('\x1b[31mport in use!');
       process.exit(1);
     } else {
       //console.log(e);
@@ -44,7 +44,7 @@ var serve = function () {
   });
 
   server.listen(8080, function(){
-    console.log('server started at http://127.0.0.1:8080/');
+    console.log('\x1b[32mserver started at http://127.0.0.1:8080/');
     exec('open http://127.0.0.1:8080/');
   });
 
