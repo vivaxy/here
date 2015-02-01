@@ -30,7 +30,7 @@ var server = http.createServer(function (req, res) {
       return;
     }
     res.writeHead(200, {
-      'Content-Type': mime[extension] || 'application/json; charset=utf-8'
+      'Content-Type': mime[extension] || 'text/plain'
     });
     res.end(data);
   });
