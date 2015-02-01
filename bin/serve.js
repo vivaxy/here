@@ -17,7 +17,7 @@ var argument = require('./argument');
  */
 var server = http.createServer(function (req, res) {
   // green
-  console.log('\x1b[36m' + 'request ' + '\x1b[0m' + req.url);
+  console.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
 
   var pathname = url.parse(req.url).pathname;
 
@@ -56,7 +56,7 @@ var serve = function () {
     if (err.code == 'EADDRINUSE') {
 
       // red
-      console.log('\x1b[31m' + 'port ' + port + ' in use' + '\x1b[0m');
+      console.log('\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m');
       process.exit(1);
       //} else {
       //  console.log(JSON.stringify(err));
@@ -69,7 +69,7 @@ var serve = function () {
     var openUrl = 'http://' + hostname + ':' + port + '/';
 
     // green
-    console.log('\x1b[36m' + 'serve at ' + '\x1b[0m' + openUrl);
+    console.log('\x1b[36m' + 'SERVER ' + '\x1b[0m' + openUrl);
     exec('open ' + openUrl + 'index.html');
   });
 
