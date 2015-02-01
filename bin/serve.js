@@ -19,11 +19,18 @@ var server = http.createServer(function (req, res) {
   console.log(req.url);
 
   var pathname = url.parse(req.url).pathname;
+
+  //// append index.html at the end of path
+  //if (pathname.lastIndexOf('/') == pathname.length - 1) pathname += 'index.html';
   //var query = url.parse(req.url).query;
 
-  var extension = path.extname(pathname);
+  var responseFile = path.join(process.cwd(), pathname);
+  //// use index.html to replace folder
+  //if (fs.statSync(responseFile).isDirectory()) responseFile = path.join(responseFile, 'index.html');
 
-  fs.readFile(path.join(process.cwd(), pathname), function (err, data) {
+  var extension = path.extname(responseFile);
+
+  fs.readFile(responseFile, function (err, data) {
     if (err) {
       res.writeHead(404);
       res.end(JSON.stringify(err));
