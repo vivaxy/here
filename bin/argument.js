@@ -13,39 +13,46 @@ var argv = process.argv.slice(2);
 
 /**
  * get argument after very string with default result
- * @param string
- * @param defalut
+ * @param array
+ * @param def
  * @returns {T|*}
  */
-var getArgumentAfterString = function (string, defalut) {
-  var index = 0;
-  argv.forEach(function (item, i) {
-    if (item === string) {
-      index = i;
-      return true;
-    }
-  });
-  return argv[index + 1] || defalut || null;
+var getArgumentAfterString = function (array, def) {
+  var index = getArgumentIndex(array) + 1;
+  if (index > 0 && index < argv.length) {
+    return argv[index];
+  } else {
+    return def || null;
+  }
 };
 
 /**
- * find if -h or --help arguments entered
- * @returns {boolean}
+ * find where arguments entered
+ * @param array
+ * @returns {number}
  */
-var needHelp = function(){
-  var found = false;
-  argv.forEach(function (item) {
-    config.help.key.forEach(function(it){
-      if (item == it){
-        found = true;
-      }
-    });
+var getArgumentIndex = function (array) {
+  var index = -1;
+  array.forEach(function (item) {
+    var i = argv.indexOf(item);
+    if (i > -1) {
+      index = i;
+    }
   });
-  return found;
+  return index;
 };
 
+/**
+ * find if argument exists
+ * @param array
+ * @returns {boolean}
+ */
+var isArgumentExists = function(array){
+  return getArgumentIndex(array) > -1;
+};
 
 module.exports = exports = {
   port: getArgumentAfterString(config.port.key, config.port.value),
-  help: needHelp()
+  help: isArgumentExists(config.help.key),
+  silent: isArgumentExists(config.silent.key)
 };

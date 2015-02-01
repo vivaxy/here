@@ -18,7 +18,7 @@ var argument = require('./argument');
  */
 var server = http.createServer(function (req, res) {
   // green
-  util.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
+  argument.silent || util.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
 
   var pathname = url.parse(req.url).pathname;
 
@@ -63,7 +63,8 @@ var serve = function () {
 
     // green
     util.log('\x1b[36m' + 'SERVER ' + '\x1b[0m' + openUrl);
-    exec('open ' + openUrl + 'index.html');
+
+    argument.silent || exec('open ' + openUrl + 'index.html');
   });
 
   return server;
