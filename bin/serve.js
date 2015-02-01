@@ -7,6 +7,7 @@ var http = require('http');
 var exec = require('child_process').exec;
 var path = require('path');
 var url = require('url');
+var util = require('util');
 
 var mime = require('./mime');
 var ip = require('./ip');
@@ -17,17 +18,11 @@ var argument = require('./argument');
  */
 var server = http.createServer(function (req, res) {
   // green
-  console.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
+  util.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
 
   var pathname = url.parse(req.url).pathname;
 
-  //// append index.html at the end of path
-  //if (pathname.lastIndexOf('/') == pathname.length - 1) pathname += 'index.html';
-  //var query = url.parse(req.url).query;
-
   var responseFile = path.join(process.cwd(), pathname);
-  //// use index.html to replace folder
-  //if (fs.statSync(responseFile).isDirectory()) responseFile = path.join(responseFile, 'index.html');
 
   var extension = path.extname(responseFile);
 
@@ -56,10 +51,8 @@ var serve = function () {
     if (err.code == 'EADDRINUSE') {
 
       // red
-      console.log('\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m');
+      util.log('\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m');
       process.exit(1);
-      //} else {
-      //  console.log(JSON.stringify(err));
     }
   });
 
@@ -69,7 +62,7 @@ var serve = function () {
     var openUrl = 'http://' + hostname + ':' + port + '/';
 
     // green
-    console.log('\x1b[36m' + 'SERVER ' + '\x1b[0m' + openUrl);
+    util.log('\x1b[36m' + 'SERVER ' + '\x1b[0m' + openUrl);
     exec('open ' + openUrl + 'index.html');
   });
 
@@ -80,10 +73,10 @@ var serve = function () {
 /**
  * main method
  */
-var main = function(){
+var main = function () {
   if (argument.help) {
-    return console.log('usage: here [-p PORT]');
-  }else{
+    return util.log('\x1b[36m' + 'USAGE ' + '\x1b[0m' + 'here [-p PORT]');
+  } else {
     return serve();
   }
 };
