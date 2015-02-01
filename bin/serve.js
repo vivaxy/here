@@ -19,7 +19,7 @@ var server = http.createServer(function (req, res) {
   console.log(req.url);
 
   var pathname = url.parse(req.url).pathname;
-  var query = url.parse(req.url).query;
+  //var query = url.parse(req.url).query;
 
   var extension = path.extname(pathname);
 
@@ -27,7 +27,7 @@ var server = http.createServer(function (req, res) {
     if (err) {
       res.writeHead(404);
       res.end(JSON.stringify(err));
-      return;
+      return true;
     }
     res.writeHead(200, {
       'Content-Type': mime[extension] || 'text/plain'
@@ -44,22 +44,22 @@ var serve = function () {
 
   var port = argument.port;
 
-  server.on('error', function (e) {
-    if (e.code == 'EADDRINUSE') {
+  server.on('error', function (err) {
+    if (err.code == 'EADDRINUSE') {
       console.log('\x1b[31mPORT ' + port + ' IN USE\x1b[0m');
       process.exit(1);
-    } else {
-      //console.log(e);
+      //} else {
+      //  console.log(JSON.stringify(err));
     }
   });
 
   server.listen(port, function () {
 
-    var hostname = ip.getIPAddress();
+    var hostname = ip.ipv4;
     var openUrl = 'http://' + hostname + ':' + port + '/';
 
     console.log('SERVER STARTED \x1b[32m' + openUrl + '\x1b[0m');
-    exec('open ' + openUrl);
+    exec('open ' + openUrl + 'index.html');
   });
 
 };

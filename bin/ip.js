@@ -2,6 +2,7 @@
  * @since 150201 10:58
  * @author vivaxy
  */
+
 var os = require('os');
 
 /**
@@ -22,6 +23,7 @@ var getIPAddress = function () {
   return ip || "127.0.0.1";
 };
 
+
 module.exports = exports = {
-  getIPAddress: getIPAddress
+  ipv4: getIPAddress()
 };

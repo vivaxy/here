@@ -2,6 +2,9 @@
  * @since 150201 11:02
  * @author vivaxy
  */
+
+var config = require('./config');
+
 /**
  * arguments
  * @type {Array.<T>|string|*|Buffer|Blob}
@@ -25,6 +28,7 @@ var getArgumentAfterString = function (string, defalut) {
   return argv[index + 1] || defalut || null;
 };
 
+
 module.exports = exports = {
-  port: getArgumentAfterString('-p', 8080)
+  port: getArgumentAfterString(config.port.key, config.port.value)
 };

@@ -1,13 +1,13 @@
 {
   "name": "serve-here",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "description": "local static server",
   "homepage": "https://github.com/vivaxy/here",
   "bin": {
     "here": "index.js"
   },
   "scripts": {
-    "test": ""
+    "test": "mocha ./test/test.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "vivaxy"
   ],
   "author": "vivaxy",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
 }
