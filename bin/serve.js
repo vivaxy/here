@@ -73,6 +73,20 @@ var serve = function () {
     exec('open ' + openUrl + 'index.html');
   });
 
+  return server;
+
 };
 
-module.exports = exports = serve;
+/**
+ * main method
+ */
+var main = function(){
+  if (argument.help) {
+    return console.log('usage: here [-p PORT]');
+  }else{
+    return serve();
+  }
+};
+
+
+module.exports = exports = main;

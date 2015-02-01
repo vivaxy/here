@@ -7,6 +7,9 @@ var config = {
   port: {
     key: '-p',
     value: '8080'
+  },
+  help: {
+    key: ['-h', '--help']
   }
 };
 
