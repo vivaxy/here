@@ -5,7 +5,9 @@
 var mimeType = {
   'html': 'text/html',
   'js': 'text/javascript',
-  'css': 'text/css'
+  'css': 'text/css',
+  'jpg': 'image/jpeg',
+  'png': 'image/png'
 };
 
-exports = module.exports = mimeType;
+module.exports = exports = mimeType;
