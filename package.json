@@ -2,6 +2,7 @@
   "name": "serve-here",
   "version": "0.0.7",
   "description": "local static server",
+  "homepage": "https://github.com/vivaxy/here",
   "bin": {
     "here": "index.js"
   },
@@ -20,9 +21,6 @@
     "server",
     "vivaxy"
   ],
-  "author": {
-    "name": "vivaxy",
-    "email": "xyxuye2007@126.com"
-  },
+  "author": "vivaxy",
   "license": "MIT"
 }
