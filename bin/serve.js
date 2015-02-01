@@ -17,8 +17,7 @@ var serve = function () {
     var pathname = url.parse(req.url).pathname;
     var query = url.parse(req.url).query;
 
-    var extensionArray = pathname.split('.');
-    var extension = extensionArray[extensionArray.length - 1];
+    var extension = path.extname(pathname);
 
     fs.readFile(path.join(process.cwd(), pathname), function (err, data) {
       if (err) {
@@ -36,15 +35,15 @@ var serve = function () {
 
   server.on('error', function (e) {
     if (e.code == 'EADDRINUSE') {
-      console.log('\x1b[31mport in use!');
+      console.log('\x1b[31mport in use!\x1b[0m');
       process.exit(1);
     } else {
       //console.log(e);
     }
   });
 
-  server.listen(8080, function(){
-    console.log('\x1b[32mserver started at http://127.0.0.1:8080/');
+  server.listen(8080, function () {
+    console.log('\x1b[32mserver started at http://127.0.0.1:8080/\x1b[0m');
     exec('open http://127.0.0.1:8080/');
   });
 

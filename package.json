@@ -1,9 +1,9 @@
 {
   "name": "serve-here",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "static server",
   "bin": {
-    "serve": "index.js"
+    "here": "index.js"
   },
   "scripts": {
     "test": ""
@@ -13,8 +13,9 @@
     "url": "https://github.com/vivaxy/here.git"
   },
   "keywords": [
-    "static",
-    "server"
+    "static server",
+    "server",
+    "vivaxy"
   ],
   "author": "vivaxy",
   "email": "xyxuye2007@126.com",
