@@ -47,13 +47,3 @@ or
 or
 
 `here --verbose`
-
-### specify the config file
-
-If this command is not supplied, *here* will look for `here.json` for default config file.
-
-And if this command is not supplied, and `here.json` not exists, *here* will respond with default.
-
-While if this command is supplied, and file specified not exists, *here* will create a sample file and use it.
-
-And if this command is supplied, and file specified exists, *here* will use it.

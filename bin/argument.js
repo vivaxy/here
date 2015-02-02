@@ -57,6 +57,5 @@ module.exports = exports = {
   help: isArgumentExists(config.help.key),
   silent: isArgumentExists(config.silent.key),
   verbose: isArgumentExists(config.verbose.key),
-  directory: getArgumentAfterString(config.directory.key, config.directory.value),
-  config: getArgumentAfterString(config.config.key, config.config.value)
+  directory: getArgumentAfterString(config.directory.key, config.directory.value)
 };

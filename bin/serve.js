@@ -86,12 +86,10 @@ var main = function () {
       '[-d DIRECTORY]' + ' ' +
       '[-v]' + ' ' +
       '[-s]' + ' ' +
-      '[-c CONFIG]' + '\n' +
       '-p, --port      : specify port; default 8080' + '\n' +
       '-d, --directory : specify root directory; default ./' + '\n' +
       '-v, --verbose   : verbose log' + '\n' +
-      '-s, --silent    : will not open browser' + '\n' +
-      '-c, --config    : specify config file; if not exists, create it; default here.json'
+      '-s, --silent    : will not open browser' + '\n'
     )
       ;
   } else {
