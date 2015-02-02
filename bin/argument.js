@@ -19,7 +19,8 @@ var argv = process.argv.slice(2);
  */
 var getArgumentAfterString = function (array, def) {
   var index = getArgumentIndex(array) + 1;
-  if (index > 0 && index < argv.length) {
+  if (index > 0 && index < argv.length && argv[index].indexOf('-') != 0) {
+    // has this argument and not starts with -
     return argv[index];
   } else {
     return def || null;
