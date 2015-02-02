@@ -54,5 +54,7 @@ var isArgumentExists = function(array){
 module.exports = exports = {
   port: getArgumentAfterString(config.port.key, config.port.value),
   help: isArgumentExists(config.help.key),
-  silent: isArgumentExists(config.silent.key)
+  silent: isArgumentExists(config.silent.key),
+  verbose: isArgumentExists(config.verbose.key),
+  directory: getArgumentAfterString(config.directory.key, config.directory.value)
 };

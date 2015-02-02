@@ -13,6 +13,17 @@ var config = {
   },
   silent: {
     key: ['-s', '--silent']
+  },
+  config: {
+    key: ['-c', '--config'],
+    value: 'here.json'
+  },
+  directory: {
+    key: ['-d', '--directory'],
+    value: './'
+  },
+  verbose: {
+    key: ['-v', '--verbose']
   }
 };
 

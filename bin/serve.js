@@ -17,14 +17,18 @@ var argument = require('./argument');
  * create a server
  */
 var server = http.createServer(function (req, res) {
-  // green
-  argument.silent || util.log('\x1b[36m' + 'REQUEST ' + '\x1b[0m' + req.url);
 
   var pathname = url.parse(req.url).pathname;
-
-  var responseFile = path.join(process.cwd(), pathname);
+  var responseFile = path.join(process.cwd(), argument.directory, pathname);
 
   var extension = path.extname(responseFile);
+  var contentType = mime[extension] || 'text/plain';
+
+  //green
+  argument.verbose && util.log(
+    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + req.url + ' ' +
+    '\x1b[36m' + 'RESPONSE Content-Type' + ' ' + '\x1b[0m' + contentType
+  );
 
   fs.readFile(responseFile, function (err, data) {
     if (err) {
@@ -33,7 +37,7 @@ var server = http.createServer(function (req, res) {
       return true;
     }
     res.writeHead(200, {
-      'Content-Type': mime[extension] || 'text/plain'
+      'Content-Type': contentType
     });
     res.end(data);
   });
@@ -62,7 +66,7 @@ var serve = function () {
     var openUrl = 'http://' + hostname + ':' + port + '/';
 
     // green
-    util.log('\x1b[36m' + 'SERVER ' + '\x1b[0m' + openUrl);
+    util.log('\x1b[36m' + 'LISTEN' + ' ' + '\x1b[0m' + openUrl);
 
     argument.silent || exec('open ' + openUrl + 'index.html');
   });
@@ -76,7 +80,20 @@ var serve = function () {
  */
 var main = function () {
   if (argument.help) {
-    return util.log('\x1b[36m' + 'USAGE ' + '\x1b[0m' + 'here [-p PORT]');
+    return util.log(
+      '\x1b[36m' + 'USAGE' + '\x1b[0m' + ' ' + 'here' + ' ' +
+      '[-p PORT]' + ' ' +
+      '[-d DIRECTORY]' + ' ' +
+      '[-v]' + ' ' +
+      '[-s]' + ' ' +
+      '[-c CONFIG]' + '\n' +
+      '-p, --port      : specify port; default 8080' + '\n' +
+      '-d, --directory : specify root directory; default ./' + '\n' +
+      '-v, --verbose   : verbose log' + '\n' +
+      '-s, --silent    : will not open browser' + '\n' +
+      '-c, --config    : specify config file; if not exists, create it; default here.json'
+    )
+      ;
   } else {
     return serve();
   }
