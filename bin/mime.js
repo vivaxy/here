@@ -7,6 +7,7 @@ var mimeType = {
   '.js': 'text/javascript',
   '.css': 'text/css',
   '': 'application/json',
+  '.json': 'application/json',
   '.jpg': 'image/jpeg',
   '.png': 'image/png',
   '.gif': 'image/gif',
