@@ -23,7 +23,7 @@ var getArgumentAfterString = function (array, def) {
     // has this argument and not starts with -
     return argv[index];
   } else {
-    return def || null;
+    return def == undefined ? null : def;
   }
 };
 
@@ -48,7 +48,7 @@ var getArgumentIndex = function (array) {
  * @param array
  * @returns {boolean}
  */
-var isArgumentExists = function(array){
+var isArgumentExists = function (array) {
   return getArgumentIndex(array) > -1;
 };
 

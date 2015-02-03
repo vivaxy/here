@@ -11,9 +11,9 @@ var assert = require("assert");
  */
 var argument = require('../bin/argument');
 describe('argument', function () {
-    it('should return 8080', function () {
-      assert.equal(8080, argument.port);
-    });
+  it('should return 8080', function () {
+    assert.equal(8080, argument.port);
+  });
 });
 
 /**
@@ -21,8 +21,8 @@ describe('argument', function () {
  * @type {exports}
  */
 var ip = require('../bin/ip');
-describe('ip', function(){
-  it('should return *.*.*.*', function(){
+describe('ip', function () {
+  it('should return *.*.*.*', function () {
     assert.equal(true, /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/.test(ip.ipv4));
   });
 });
@@ -32,8 +32,8 @@ describe('ip', function(){
  * @type {serve|exports}
  */
 var serve = require('../bin/serve');
-describe('serve', function(){
-  it('should be function', function(){
+describe('serve', function () {
+  it('should be function', function () {
     assert.equal('function', typeof serve);
   })
 });
