@@ -11,8 +11,8 @@ var assert = require("assert");
  */
 var argument = require('../bin/argument');
 describe('argument', function () {
-  it('should return 8080', function () {
-    assert.equal(8080, argument.port);
+  it('should return 3000', function () {
+    assert.equal(3000, argument.port);
   });
 });
 
