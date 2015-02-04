@@ -21,7 +21,9 @@ var hostname = ip.ipv4;
  */
 var server = http.createServer(function (req, res) {
 
-  var pathname = url.parse(req.url).pathname;
+  var reqUrl = decodeURIComponent(req.url);
+
+  var pathname = url.parse(reqUrl).pathname;
   var responseFile = path.join(process.cwd(), argument.directory, pathname);
 
   var extension = path.extname(responseFile);
@@ -29,7 +31,7 @@ var server = http.createServer(function (req, res) {
 
   //green
   argument.verbose && util.log(
-    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + req.url + ' ' +
+    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + reqUrl + ' ' +
     '\x1b[36m' + 'RESPONSE Content-Type' + ' ' + '\x1b[0m' + contentType
   );
 
