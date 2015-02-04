@@ -13,6 +13,9 @@ var mime = require('./mime');
 var ip = require('./ip');
 var argument = require('./argument');
 
+var port = argument.port;
+var hostname = ip.ipv4;
+
 /**
  * create a server
  */
@@ -31,17 +34,66 @@ var server = http.createServer(function (req, res) {
   );
 
   fs.readFile(responseFile, function (err, data) {
-    if (err) {
-      res.writeHead(404);
-      res.end(JSON.stringify(err));
-      return true;
-    }
-    res.writeHead(200, {
-      'Content-Type': contentType
-    });
-    res.end(data);
-  });
 
+    if (err) {
+
+      // if requested file is a folder, returns files link
+      if (err.code == 'EISDIR') {
+        // request a folder
+
+        // read files
+        fs.readdir(responseFile, function (e, files) {
+
+          if (e) {
+
+            // error occurs
+            res.writeHead(404);
+            res.end(JSON.stringify(err));
+
+          } else {
+
+            // respond links
+            res.writeHead(200);
+            files = files.map(function (file) {
+              return '<a href="http://' + hostname + ':' + port + path.join(pathname, file) + '">' + file + '</a>';
+            });
+            res.end(files.join('<br>'));
+
+          }
+        });
+      } else {
+
+        // other errors
+        res.writeHead(404);
+        res.end(JSON.stringify(err));
+
+      }
+    } else {
+
+      // request a file
+      res.writeHead(200, {
+        'Content-Type': contentType
+      });
+      res.end(data);
+
+    }
+  });
+});
+
+server.on('error', function (err) {
+  if (err.code == 'EADDRINUSE') {
+
+    // red
+    util.log(
+      '\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m'
+    );
+
+    port = parseInt(port) + 1;
+
+    server.listen(port);
+
+    //process.exit(1);
+  }
 });
 
 /**
@@ -49,29 +101,15 @@ var server = http.createServer(function (req, res) {
  */
 var serve = function () {
 
-  var port = argument.port;
-
-  server.on('error', function (err) {
-    if (err.code == 'EADDRINUSE') {
-
-      // red
-      util.log('\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m');
-      process.exit(1);
-    }
-  });
-
   server.listen(port, function () {
 
-    var hostname = ip.ipv4;
     var openUrl = 'http://' + hostname + ':' + port + '/';
 
     // green
     util.log('\x1b[36m' + 'LISTEN' + ' ' + '\x1b[0m' + openUrl);
 
-    argument.silent || exec('open ' + openUrl + 'index.html');
+    argument.silent || exec('open ' + openUrl);
   });
-
-  return server;
 
 };
 
@@ -80,7 +118,7 @@ var serve = function () {
  */
 var main = function () {
   if (argument.help) {
-    return util.log(
+    util.log(
       '\x1b[36m' + 'USAGE' + '\x1b[0m' + ' ' + 'here' + ' ' +
       '[-p PORT]' + ' ' +
       '[-d DIRECTORY]' + ' ' +
@@ -92,7 +130,7 @@ var main = function () {
       '\x1b[36m' + '-s, --silent    ' + '\x1b[0m' + 'will not open browser'
     );
   } else {
-    return serve();
+    serve();
   }
 };
 

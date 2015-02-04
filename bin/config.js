@@ -6,7 +6,7 @@
 var config = {
   port: {
     key: ['-p', '--port'],
-    value: '8080'
+    value: '3000'
   },
   help: {
     key: ['-h', '--help']

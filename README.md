@@ -20,7 +20,7 @@ or
 
 `here --port 8888`
 
-default port is 8080
+default port is 3000
 
 #### specify server root directory
 
