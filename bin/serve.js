@@ -12,6 +12,7 @@ var util = require('util');
 var mime = require('./mime');
 var ip = require('./ip');
 var argument = require('./argument');
+var html = require('./html');
 
 var port = argument.port;
 var hostname = ip.ipv4;
@@ -56,14 +57,12 @@ var server = http.createServer(function (req, res) {
 
             // respond links
             res.writeHead(200);
-            files = files.map(function (file) {
+
+            var fileList = files.map(function (file) {
               return '<a href="http://' + hostname + ':' + port + path.join(pathname, file) + '"><span>' + file + '</span></a>';
             });
 
-            var resp = files.join('') + '' +
-              '<style>' +
-              'body{background:#eee;width:100%;margin:0}a{display:block;-webkit-tap-highlight-color:rgba(0,0,0,0.1);height:48px;text-decoration:none;background-color:#fff;border-bottom:1px solid #ddd}a span{display:inline-block;line-height:32px;font-size:16px;color:#000;margin:8px 0 8px 48px}' +
-              '</style>';
+            var resp = html(fileList);
 
             res.end(resp);
 
