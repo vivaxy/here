@@ -32,8 +32,7 @@ var server = http.createServer(function (req, res) {
 
   //green
   argument.verbose && util.log(
-    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + reqUrl + ' ' +
-    '\x1b[36m' + 'RESPONSE Content-Type' + ' ' + '\x1b[0m' + contentType
+    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + reqUrl
   );
 
   fs.readFile(responseFile, function (err, data) {
