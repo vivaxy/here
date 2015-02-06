@@ -58,7 +58,11 @@ var server = http.createServer(function (req, res) {
             res.writeHead(200);
 
             var fileList = files.map(function (file) {
-              return '<a href="http://' + hostname + ':' + port + path.join(pathname, file) + '"><span>' + file + '</span></a>';
+              var _ext = path.extname(file).replace('.', '');
+              if (_ext == '') _ext = 'dir';
+              return '<a href="http://' + hostname + ':' + port + path.join(pathname, file) + '">' +
+                '<span class="' + _ext + '">' +
+                file + '</span></a>';
             });
 
             var resp = html(fileList);
