@@ -50,22 +50,23 @@ var listStyle = 'body' +
 var template = function (files, hostname, port, pathname) {
 
     files.sort(function (a, b) {
-        if (a.indexOf('.') == 0) {
-            return 1;
-        }
         var _ext_a = path.extname(a);
         var _ext_b = path.extname(b);
         if (_ext_a == _ext_b) {
             // same extension
             return a > b;
             // different
-        } else if (_ext_a == '.html') {
+        }
+        if (_ext_a == '.html') {
             return -1;
-        } else if (_ext_b == '.html') {
+        }
+        if (_ext_b == '.html') {
             return 1;
-        } else if (_ext_a == '') {
+        }
+        if (_ext_a == '') {
             return -1;
-        } else if (_ext_b == '') {
+        }
+        if (_ext_b == '') {
             return 1;
         }
         return 0;
