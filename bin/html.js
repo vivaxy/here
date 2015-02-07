@@ -43,7 +43,7 @@ var listStyle = 'body' +
 
     '.dir' +
     '{' +
-    'color:#2980b9;' +
+    'color:#1abc9c;' +
     '}';
 
 
