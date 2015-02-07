@@ -61,10 +61,10 @@ var template = function (files, hostname, port, pathname) {
             // different
         } else if (_ext_a == '.html') {
             return -1;
-        } else if (_ext_a == '') {
-            return -1;
         } else if (_ext_b == '.html') {
             return 1;
+        } else if (_ext_a == '') {
+            return -1;
         } else if (_ext_b == '') {
             return 1;
         }
