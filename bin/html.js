@@ -71,8 +71,6 @@ var template = function (files, hostname, port, pathname) {
         return 0;
     });
 
-    console.log(files);
-
     var list = files.map(function (file) {
         var _ext = path.extname(file).replace('.', '');
         if (_ext == '') _ext = 'dir';
