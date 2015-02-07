@@ -6,6 +6,7 @@ var mimeType = {
     '.html': 'text/html',
     '.js': 'text/javascript',
     '.css': 'text/css',
+    '.xml': 'application/xml',
     '': 'application/json',
     '.json': 'application/json',
     '.ftl': 'text/html',
