@@ -4,23 +4,23 @@
  */
 
 var config = {
-  port: {
-    key: ['-p', '--port'],
-    value: '3000'
-  },
-  help: {
-    key: ['-h', '--help']
-  },
-  silent: {
-    key: ['-s', '--silent']
-  },
-  directory: {
-    key: ['-d', '--directory'],
-    value: './'
-  },
-  verbose: {
-    key: ['-v', '--verbose']
-  }
+    port: {
+        key: ['-p', '--port'],
+        value: '3000'
+    },
+    help: {
+        key: ['-h', '--help']
+    },
+    silent: {
+        key: ['-s', '--silent']
+    },
+    directory: {
+        key: ['-d', '--directory'],
+        value: './'
+    },
+    verbose: {
+        key: ['-v', '--verbose']
+    }
 };
 
 

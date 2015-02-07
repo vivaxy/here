@@ -18,13 +18,13 @@ var argv = process.argv.slice(2);
  * @returns {T|*}
  */
 var getArgumentAfterString = function (array, def) {
-  var index = getArgumentIndex(array) + 1;
-  if (index > 0 && index < argv.length && argv[index].indexOf('-') != 0) {
-    // has this argument and not starts with -
-    return argv[index];
-  } else {
-    return def == undefined ? null : def;
-  }
+    var index = getArgumentIndex(array) + 1;
+    if (index > 0 && index < argv.length && argv[index].indexOf('-') != 0) {
+        // has this argument and not starts with -
+        return argv[index];
+    } else {
+        return def == undefined ? null : def;
+    }
 };
 
 /**
@@ -33,14 +33,14 @@ var getArgumentAfterString = function (array, def) {
  * @returns {number}
  */
 var getArgumentIndex = function (array) {
-  var index = -1;
-  array.forEach(function (item) {
-    var i = argv.indexOf(item);
-    if (i > -1) {
-      index = i;
-    }
-  });
-  return index;
+    var index = -1;
+    array.forEach(function (item) {
+        var i = argv.indexOf(item);
+        if (i > -1) {
+            index = i;
+        }
+    });
+    return index;
 };
 
 /**
@@ -49,13 +49,13 @@ var getArgumentIndex = function (array) {
  * @returns {boolean}
  */
 var isArgumentExists = function (array) {
-  return getArgumentIndex(array) > -1;
+    return getArgumentIndex(array) > -1;
 };
 
 module.exports = exports = {
-  port: getArgumentAfterString(config.port.key, config.port.value),
-  help: isArgumentExists(config.help.key),
-  silent: isArgumentExists(config.silent.key),
-  verbose: isArgumentExists(config.verbose.key),
-  directory: getArgumentAfterString(config.directory.key, config.directory.value)
+    port: getArgumentAfterString(config.port.key, config.port.value),
+    help: isArgumentExists(config.help.key),
+    silent: isArgumentExists(config.silent.key),
+    verbose: isArgumentExists(config.verbose.key),
+    directory: getArgumentAfterString(config.directory.key, config.directory.value)
 };

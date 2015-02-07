@@ -22,88 +22,80 @@ var hostname = ip.ipv4;
  */
 var server = http.createServer(function (req, res) {
 
-  var reqUrl = decodeURIComponent(req.url);
+    var reqUrl = decodeURIComponent(req.url);
 
-  var pathname = url.parse(reqUrl).pathname;
-  var responseFile = path.join(process.cwd(), argument.directory, pathname);
+    var pathname = url.parse(reqUrl).pathname;
+    var responseFile = path.join(process.cwd(), argument.directory, pathname);
 
-  var extension = path.extname(responseFile);
-  var contentType = mime[extension] || 'text/plain';
+    var extension = path.extname(responseFile);
+    var contentType = mime[extension] || 'text/plain';
 
-  //green
-  argument.verbose && util.log(
-    '\x1b[36m' + req.method + ' ' + '\x1b[0m' + reqUrl
-  );
+    //green
+    argument.verbose && util.log(
+        '\x1b[36m' + req.method + ' ' + '\x1b[0m' + reqUrl
+    );
 
-  fs.readFile(responseFile, function (err, data) {
+    fs.readFile(responseFile, function (err, data) {
 
-    if (err) {
+        if (err) {
 
-      // if requested file is a folder, returns files link
-      if (err.code == 'EISDIR') {
-        // request a folder
+            // if requested file is a folder, returns files link
+            if (err.code == 'EISDIR') {
+                // request a folder
 
-        // read files
-        fs.readdir(responseFile, function (e, files) {
+                // read files
+                fs.readdir(responseFile, function (e, files) {
 
-          if (e) {
+                    if (e) {
 
-            // error occurs
-            res.writeHead(404);
-            res.end(JSON.stringify(err));
+                        // error occurs
+                        res.writeHead(404);
+                        res.end(JSON.stringify(err));
 
-          } else {
+                    } else {
 
-            // respond links
-            res.writeHead(200);
+                        // respond links
+                        res.writeHead(200);
 
-            var fileList = files.map(function (file) {
-              var _ext = path.extname(file).replace('.', '');
-              if (_ext == '') _ext = 'dir';
-              return '<a href="http://' + hostname + ':' + port + path.join(pathname, file) + '">' +
-                '<span class="' + _ext + '">' +
-                file + '</span></a>';
+                        var resp = html(files, hostname, port, pathname);
+
+                        res.end(resp);
+
+                    }
+                });
+            } else {
+
+                // other errors
+                res.writeHead(404);
+                res.end(JSON.stringify(err));
+
+            }
+        } else {
+
+            // request a file
+            res.writeHead(200, {
+                'Content-Type': contentType
             });
+            res.end(data);
 
-            var resp = html(fileList);
-
-            res.end(resp);
-
-          }
-        });
-      } else {
-
-        // other errors
-        res.writeHead(404);
-        res.end(JSON.stringify(err));
-
-      }
-    } else {
-
-      // request a file
-      res.writeHead(200, {
-        'Content-Type': contentType
-      });
-      res.end(data);
-
-    }
-  });
+        }
+    });
 });
 
 server.on('error', function (err) {
-  if (err.code == 'EADDRINUSE') {
+    if (err.code == 'EADDRINUSE') {
 
-    // red
-    util.log(
-      '\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m'
-    );
+        // red
+        util.log(
+            '\x1b[31m' + 'PORT ' + port + ' IN USE' + '\x1b[0m'
+        );
 
-    port = parseInt(port) + 1;
+        port = parseInt(port) + 1;
 
-    server.listen(port);
+        server.listen(port);
 
-    //process.exit(1);
-  }
+        //process.exit(1);
+    }
 });
 
 /**
@@ -111,15 +103,15 @@ server.on('error', function (err) {
  */
 var serve = function () {
 
-  server.listen(port, function () {
+    server.listen(port, function () {
 
-    var openUrl = 'http://' + hostname + ':' + port + '/';
+        var openUrl = 'http://' + hostname + ':' + port + '/';
 
-    // green
-    util.log('\x1b[36m' + 'LISTEN' + ' ' + '\x1b[0m' + openUrl);
+        // green
+        util.log('\x1b[36m' + 'LISTEN' + ' ' + '\x1b[0m' + openUrl);
 
-    argument.silent || exec('open ' + openUrl);
-  });
+        argument.silent || exec('open ' + openUrl);
+    });
 
 };
 
@@ -127,21 +119,21 @@ var serve = function () {
  * main method
  */
 var main = function () {
-  if (argument.help) {
-    util.log(
-      '\x1b[36m' + 'USAGE' + '\x1b[0m' + ' ' + 'here' + ' ' +
-      '[-p PORT]' + ' ' +
-      '[-d DIRECTORY]' + ' ' +
-      '[-v]' + ' ' +
-      '[-s]' + ' ' + '\n' +
-      '\x1b[36m' + '-p, --port      ' + '\x1b[0m' + 'specify port; default 8080' + '\n' +
-      '\x1b[36m' + '-d, --directory ' + '\x1b[0m' + 'specify root directory; default ./' + '\n' +
-      '\x1b[36m' + '-v, --verbose   ' + '\x1b[0m' + 'verbose log' + '\n' +
-      '\x1b[36m' + '-s, --silent    ' + '\x1b[0m' + 'will not open browser'
-    );
-  } else {
-    serve();
-  }
+    if (argument.help) {
+        util.log(
+            '\x1b[36m' + 'USAGE' + '\x1b[0m' + ' ' + 'here' + ' ' +
+            '[-p PORT]' + ' ' +
+            '[-d DIRECTORY]' + ' ' +
+            '[-v]' + ' ' +
+            '[-s]' + ' ' + '\n' +
+            '\x1b[36m' + '-p, --port      ' + '\x1b[0m' + 'specify port; default 8080' + '\n' +
+            '\x1b[36m' + '-d, --directory ' + '\x1b[0m' + 'specify root directory; default ./' + '\n' +
+            '\x1b[36m' + '-v, --verbose   ' + '\x1b[0m' + 'verbose log' + '\n' +
+            '\x1b[36m' + '-s, --silent    ' + '\x1b[0m' + 'will not open browser'
+        );
+    } else {
+        serve();
+    }
 };
 
 
