@@ -126,7 +126,7 @@ var main = function () {
             '[-d DIRECTORY]' + ' ' +
             '[-v]' + ' ' +
             '[-s]' + ' ' + '\n' +
-            '\x1b[36m' + '-p, --port      ' + '\x1b[0m' + 'specify port; default 8080' + '\n' +
+            '\x1b[36m' + '-p, --port      ' + '\x1b[0m' + 'specify port; default 3000' + '\n' +
             '\x1b[36m' + '-d, --directory ' + '\x1b[0m' + 'specify root directory; default ./' + '\n' +
             '\x1b[36m' + '-v, --verbose   ' + '\x1b[0m' + 'verbose log' + '\n' +
             '\x1b[36m' + '-s, --silent    ' + '\x1b[0m' + 'will not open browser'

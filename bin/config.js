@@ -8,18 +8,18 @@ var config = {
         key: ['-p', '--port'],
         value: '3000'
     },
-    help: {
-        key: ['-h', '--help']
-    },
-    silent: {
-        key: ['-s', '--silent']
-    },
     directory: {
         key: ['-d', '--directory'],
         value: './'
     },
+    silent: {
+        key: ['-s', '--silent']
+    },
     verbose: {
         key: ['-v', '--verbose']
+    },
+    help: {
+        key: ['-h', '--help']
     }
 };
 
