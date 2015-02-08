@@ -92,12 +92,12 @@ var template = function (files, hostname, port, pathname) {
         if (_ext_b == '.html') {
             return 1;
         }
-        if (_ext_a.indexOf('.') == 0) {
-            return 1;
-        }
-        if (_ext_b.indexOf('.') == 0) {
-            return 1;
-        }
+        //if (_ext_a.indexOf('.') == 0) {
+        //    return 1;
+        //}
+        //if (_ext_b.indexOf('.') == 0) {
+        //    return 1;
+        //}
         return 0;
     });
 
