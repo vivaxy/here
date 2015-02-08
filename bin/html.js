@@ -29,7 +29,7 @@ var listStyle = 'body' +
     'height: 32px;' +
     'line-height: 32px;' +
     'font-size: 16px;' +
-    'color: #3498db;' +
+    'color: #2980b9;' +
     'margin: 8px 0 8px 32px;' +
     'overflow: hidden;' +
     'text-overflow: ellipsis;' +
