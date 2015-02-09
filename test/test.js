@@ -9,7 +9,7 @@ var assert = require("assert");
  * test argument
  * @type {exports}
  */
-var argument = require('../bin/argument');
+var argument = require('../lib/argument');
 describe('argument', function () {
     it('should return 3000', function () {
         assert.equal(3000, argument.port);
@@ -20,7 +20,7 @@ describe('argument', function () {
  * test ip
  * @type {exports}
  */
-var ip = require('../bin/ip');
+var ip = require('../lib/ip');
 describe('ip', function () {
     it('should return *.*.*.*', function () {
         assert.equal(true, /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/.test(ip.ipv4));
@@ -31,7 +31,7 @@ describe('ip', function () {
  * test serve
  * @type {serve|exports}
  */
-var serve = require('../bin/serve');
+var serve = require('../lib/serve');
 describe('serve', function () {
     it('should be function', function () {
         assert.equal('function', typeof serve);
