@@ -1,4 +1,6 @@
-#serve-*here* [![Build Status](https://travis-ci.org/vivaxy/here.svg?branch=master)](https://travis-ci.org/vivaxy/here)
+#serve-*here*
+
+[![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 
 local static server
 
@@ -47,3 +49,14 @@ or
 or
 
 `here --verbose`
+
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://www.npmjs.com/package/serve-here
+[npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat
+
+[travis-url]: https://travis-ci.org/vivaxy/here
+[travis-image]: https://travis-ci.org/vivaxy/here.svg?branch=master
