@@ -31,7 +31,7 @@ describe('ip', function () {
  * test serve
  * @type {serve|exports}
  */
-var serve = require('../lib/serve');
+var serve = require('../lib/main');
 describe('serve', function () {
     it('should be function', function () {
         assert.equal('function', typeof serve);
