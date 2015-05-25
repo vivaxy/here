@@ -42,3 +42,5 @@ var util = require('util'),
     };
 
 main();
+
+module.exports = main;
