@@ -56,6 +56,15 @@ or
 `here --verbose`
 
 
+#### do not watch file change
+
+`here -w`
+
+or
+
+`here --no-watch`
+
+
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/serve-here
 [npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat

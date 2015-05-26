@@ -23,21 +23,27 @@ var util = require('util'),
                 '[-d DIRECTORY]' + ' ' +
                 '[-v]' + ' ' +
                 '[-s]' + ' ' + '\n' +
+                '[-w]' +
                 color('-p, --port      ', 'green') + 'specify port; default 3000' + '\n' +
                 color('-d, --directory ', 'green') + 'specify root directory; default .' + '\n' +
                 color('-v, --verbose   ', 'green') + 'verbose log' + '\n' +
-                color('-s, --silent    ', 'green') + '\x1b[0m' + 'will not open browser'
+                color('-s, --silent    ', 'green') + 'will not open browser' +
+                color('-w, --no-watch  ', 'green') + 'will not watch files'
             );
         } else {
             new Server({
                 port: argument.port,
                 silent: argument.silent,
                 verbose: argument.verbose,
-                directory: argument.directory
+                directory: argument.directory,
+                noWatch: argument.noWatch
             });
-            new Watcher({
-                verbose: argument.verbose
-            });
+            if (!argument.noWatch) {
+                new Watcher({
+                    verbose: argument.verbose,
+                    directory: argument.directory
+                });
+            }
         }
     };
 
