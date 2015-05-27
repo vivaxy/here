@@ -31,15 +31,29 @@ var util = require('util'),
                 color('-w, --watch     ', 'green') + 'will watch html,js,css files; once changed, reload'
             );
         } else {
-            new Server({
-                port: argument.port,
-                silent: argument.silent,
-                verbose: argument.verbose,
-                directory: argument.directory,
-                watch: argument.watch
-            });
+            var watcherPort = 13000;
             if (argument.watch) {
-                new Watcher({
+                var watcher = new Watcher({
+                    port: watcherPort,
+                    verbose: argument.verbose,
+                    directory: argument.directory,
+                    callback: function () {
+                        watcherPort = watcher.getPort();
+                        new Server({
+                            port: argument.port,
+                            watch: argument.watch,
+                            silent: argument.silent,
+                            verbose: argument.verbose,
+                            directory: argument.directory,
+                            watcherPort: watcherPort
+                        });
+                    }
+                });
+            } else {
+                new Server({
+                    port: argument.port,
+                    watch: argument.watch,
+                    silent: argument.silent,
                     verbose: argument.verbose,
                     directory: argument.directory
                 });

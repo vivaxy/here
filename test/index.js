@@ -12,6 +12,7 @@ socket.onclose = function () {
     console.log(arguments);
 };
 socket.onmessage = function (data) {
+    console.log(data);
     if (data.data === 'reload'){
         location.reload();
     }
