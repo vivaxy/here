@@ -56,13 +56,13 @@ or
 `here --verbose`
 
 
-#### do not watch file change
+#### watch file changes, once html,js,css file changed, reload pages
 
 `here -w`
 
 or
 
-`here --no-watch`
+`here --watch`
 
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat

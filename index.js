@@ -28,7 +28,7 @@ var util = require('util'),
                 color('-d, --directory ', 'green') + 'specify root directory; default .' + '\n' +
                 color('-v, --verbose   ', 'green') + 'verbose log' + '\n' +
                 color('-s, --silent    ', 'green') + 'will not open browser' +
-                color('-w, --no-watch  ', 'green') + 'will not watch files'
+                color('-w, --watch     ', 'green') + 'will watch html,js,css files; once changed, reload'
             );
         } else {
             new Server({
@@ -36,9 +36,9 @@ var util = require('util'),
                 silent: argument.silent,
                 verbose: argument.verbose,
                 directory: argument.directory,
-                noWatch: argument.noWatch
+                watch: argument.watch
             });
-            if (!argument.noWatch) {
+            if (argument.watch) {
                 new Watcher({
                     verbose: argument.verbose,
                     directory: argument.directory
