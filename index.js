@@ -17,18 +17,18 @@ var util = require('util'),
      */
     main = function () {
         if (argument.help) {
-            log(color('USAGE', 'green') +
+            log(color('USAGE', 'cyan') +
                 ' ' + 'here' + ' ' +
                 '[-p PORT]' + ' ' +
                 '[-d DIRECTORY]' + ' ' +
                 '[-v]' + ' ' +
-                '[-s]' + ' ' + '\n' +
-                '[-w]' +
-                color('-p, --port      ', 'green') + 'specify port; default 3000' + '\n' +
-                color('-d, --directory ', 'green') + 'specify root directory; default .' + '\n' +
-                color('-v, --verbose   ', 'green') + 'verbose log' + '\n' +
-                color('-s, --silent    ', 'green') + 'will not open browser' +
-                color('-w, --watch     ', 'green') + 'will watch html,js,css files; once changed, reload'
+                '[-s]' + ' ' +
+                '[-w]' + '\n' +
+                color('-p, --port      ', 'cyan') + 'specify port; default 3000' + '\n' +
+                color('-d, --directory ', 'cyan') + 'specify root directory; default .' + '\n' +
+                color('-v, --verbose   ', 'cyan') + 'verbose log' + '\n' +
+                color('-s, --silent    ', 'cyan') + 'will not open browser' + '\n' +
+                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload'
             );
         } else {
             var watcherPort = 13000;
