@@ -3,7 +3,8 @@
  * @since 150130 17:29
  * @author vivaxy
  */
-var util = require('util'),
+var fs = require('fs'),
+    util = require('util'),
 
     color = require('./lib/color'),
     argument = require('./lib/argument'),
@@ -21,21 +22,30 @@ var util = require('util'),
                 ' ' + 'here' + ' ' +
                 '[-p PORT]' + ' ' +
                 '[-d DIRECTORY]' + ' ' +
-                '[-v]' + ' ' +
                 '[-s]' + ' ' +
-                '[-w]' + '\n' +
+                '[-w INTERVAL(seconds)]' + ' ' +
+                '[-l]' + ' ' +
+                '[-v]' + '\n' +
+
                 color('-p, --port      ', 'cyan') + 'specify port; default 3000' + '\n' +
                 color('-d, --directory ', 'cyan') + 'specify root directory; default .' + '\n' +
-                color('-v, --verbose   ', 'cyan') + 'verbose log' + '\n' +
                 color('-s, --silent    ', 'cyan') + 'will not open browser' + '\n' +
-                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload'
+                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload pages; default interval 0' +
+                color('-l, --log       ', 'cyan') + 'output log' +
+                color('-v, --version   ', 'cyan') + 'output version' + '\n'
             );
+        } else if (argument.version) {
+            fs.readFile('./package.json', function (err, fileData) {
+                var packageData = JSON.parse(fileData);
+                log('serve-here: ' + packageData.version);
+            });
         } else {
             var watcherPort = 13000;
             if (argument.watch) {
                 var watcher = new Watcher({
                     port: watcherPort,
-                    verbose: argument.verbose,
+                    log: argument.log,
+                    interval: parseInt(argument.watch),
                     directory: argument.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
@@ -51,10 +61,10 @@ var util = require('util'),
                 });
             } else {
                 new Server({
-                    port: argument.port,
+                    log: argument.log,
+                    port: parseInt(argument.port),
                     watch: argument.watch,
                     silent: argument.silent,
-                    verbose: argument.verbose,
                     directory: argument.directory
                 });
             }

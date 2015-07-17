@@ -47,22 +47,24 @@ or
 
 `here --silent`
 
-#### verbose log
+#### output log
 
-`here -v`
+`here -l`
 
 or
 
-`here --verbose`
+`here --log`
 
 
 #### watch file changes, once html,js,css file changed, reload pages
 
-`here -w`
+`here -w 3`
 
 or
 
 `here --watch`
+
+default interval is 3 seconds
 
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
