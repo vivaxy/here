@@ -30,9 +30,9 @@ var fs = require('fs'),
                 color('-p, --port      ', 'cyan') + 'specify port; default 3000' + '\n' +
                 color('-d, --directory ', 'cyan') + 'specify root directory; default .' + '\n' +
                 color('-s, --silent    ', 'cyan') + 'will not open browser' + '\n' +
-                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload pages; default interval 0' +
-                color('-l, --log       ', 'cyan') + 'output log' +
-                color('-v, --version   ', 'cyan') + 'output version' + '\n'
+                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload pages; default interval 0' +  '\n' +
+                color('-l, --log       ', 'cyan') + 'output log' + '\n' +
+                color('-v, --version   ', 'cyan') + 'output version'
             );
         } else if (argument.version) {
             fs.readFile('./package.json', function (err, fileData) {
