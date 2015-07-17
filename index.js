@@ -45,7 +45,7 @@ var fs = require('fs'),
                 var watcher = new Watcher({
                     port: watcherPort,
                     log: argument.log,
-                    interval: parseInt(argument.watch),
+                    interval: parseInt(argument.reloadInterval),
                     directory: argument.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
