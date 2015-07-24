@@ -6,6 +6,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][david-image]][david-url]
 [![Gittip][gittip-image]][gittip-url]
+[![NPM](https://nodei.co/npm-dl/serve-here.png?height=3)](https://nodei.co/npm/serve-here/)
 
 local static server
 
