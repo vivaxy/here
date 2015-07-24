@@ -7,7 +7,7 @@
 [![Dependency Status][david-image]][david-url]
 [![Gittip][gittip-image]][gittip-url]
 
-[![NPM](https://nodei.co/npm-dl/serve-here.png?height=3)](https://nodei.co/npm/serve-here/)
+[![NPM][nodei-image]][nodei-url]
 
 local static server
 
@@ -80,3 +80,5 @@ default interval is 3 seconds
 [david-url]: https://david-dm.org/vivaxy/here
 [gittip-image]: https://img.shields.io/gittip/vivaxy.svg?style=flat
 [gittip-url]: https://www.gittip.com/vivaxy/
+[nodei-image]: https://nodei.co/npm-dl/serve-here.png?height=3
+[nodei-url]: https://nodei.co/npm/serve-here/
