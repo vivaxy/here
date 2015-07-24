@@ -1,34 +1,47 @@
 {
-  "name": "serve-here",
-  "version": "2.1.2",
-  "description": "local static server",
-  "homepage": "https://github.com/vivaxy/here",
-  "bin": {
-    "here": "index.js"
-  },
-  "scripts": {
-    "test": "mocha ./test/test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vivaxy/here.git"
-  },
-  "bugs": {
-    "url": "https://github.com/vivaxy/here/issues"
-  },
-  "keywords": [
-    "static server",
-    "server",
-    "vivaxy"
-  ],
-  "author": "vivaxy",
-  "license": "MIT",
-  "devDependencies": {
-    "mocha": "^2.1.0"
-  },
-  "dependencies": {
-    "chokidar": "^1.0.1",
-    "jade": "^1.9.2",
-    "ws": "^0.7.2"
-  }
+    "name": "serve-here",
+    "version": "2.1.2",
+    "description": "local static server",
+    "homepage": "https://github.com/vivaxy/here",
+    "bin": {
+        "here": "./index.js"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "scripts": {
+        "test": "mocha ./test/test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vivaxy/here.git"
+    },
+    "bugs": {
+        "url": "https://github.com/vivaxy/here/issues"
+    },
+    "keywords": [
+        "server",
+        "static server",
+        "local server",
+        "vivaxy",
+        "tool",
+        "web",
+        "reload"
+    ],
+    "author": "vivaxy",
+    "contributors": [
+        {
+            "name": "vivaxy",
+            "email": "xyxuye2007@126.com"
+        }
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "mocha": "^2.1.0"
+    },
+    "dependencies": {
+        "chokidar": "^1.0.1",
+        "jade": "^1.9.2",
+        "ws": "^0.7.2"
+    }
 }
