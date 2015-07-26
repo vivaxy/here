@@ -5,19 +5,20 @@
  */
 var util = require('util'),
 
-    color = require('./lib/color'),
+    chalk = require('chalk'),
+    
+    Server = require('./lib/server'),
+    Watcher = require('./lib/watcher'),
     argument = require('./lib/argument'),
 
     log = util.log,
 
-    Server = require('./lib/server'),
-    Watcher = require('./lib/watcher'),
     /**
      * main method
      */
     main = function () {
         if (argument.help) {
-            log(color('USAGE', 'cyan') +
+            log(chalk.cyan('USAGE') +
                 ' ' + 'here' + ' ' +
                 '[-p PORT]' + ' ' +
                 '[-d DIRECTORY]' + ' ' +
@@ -26,12 +27,12 @@ var util = require('util'),
                 '[-l]' + ' ' +
                 '[-v]' + '\n' +
 
-                color('-p, --port      ', 'cyan') + 'specify port; default 3000' + '\n' +
-                color('-d, --directory ', 'cyan') + 'specify root directory; default .' + '\n' +
-                color('-s, --silent    ', 'cyan') + 'will not open browser' + '\n' +
-                color('-w, --watch     ', 'cyan') + 'will watch html,js,css files; once changed, reload pages; default interval 0' + '\n' +
-                color('-l, --log       ', 'cyan') + 'output log' + '\n' +
-                color('-v, --version   ', 'cyan') + 'output version'
+                chalk.cyan('-p, --port      ') + 'specify port; default 3000' + '\n' +
+                chalk.cyan('-d, --directory ') + 'specify root directory; default .' + '\n' +
+                chalk.cyan('-s, --silent    ') + 'will not open browser' + '\n' +
+                chalk.cyan('-w, --watch     ') + 'will watch html,js,css files; once changed, reload pages; default interval 0' + '\n' +
+                chalk.cyan('-l, --log       ') + 'output log' + '\n' +
+                chalk.cyan('-v, --version   ') + 'output version'
             );
         } else if (argument.version) {
             log('serve-here: ' + require('./package.json').version);

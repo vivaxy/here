@@ -17,17 +17,6 @@ describe('argument', function () {
 });
 
 /**
- * test ip
- * @type {exports}
- */
-var ip = require('../lib/ip');
-describe('ip', function () {
-    it('should return *.*.*.*', function () {
-        assert.equal(true, /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/.test(ip.ipv4));
-    });
-});
-
-/**
  * test serve
  * @type {serve|exports}
  */
