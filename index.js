@@ -15,7 +15,7 @@ var chalk = require('chalk'),
      */
     main = function () {
         if (argument.help) {
-            log('serve-here: ' + chalk.cyan('USAGE') +
+            log(chalk.cyan('USAGE') +
                 ' ' + 'here' + ' ' +
                 '[-p PORT]' + ' ' +
                 '[-d DIRECTORY]' + ' ' +
@@ -23,12 +23,12 @@ var chalk = require('chalk'),
                 '[-w INTERVAL(seconds)]' + ' ' +
                 '[-l]' + ' ' +
                 '[-v]' + '\n' +
-                chalk.cyan('             -p, --port      ') + 'specify port; default 3000' + '\n' +
-                chalk.cyan('             -d, --directory ') + 'specify root directory; default .' + '\n' +
-                chalk.cyan('             -s, --silent    ') + 'will not open browser' + '\n' +
-                chalk.cyan('             -w, --watch     ') + 'will watch html,css,js files; once changed, reload pages; default interval 0' + '\n' +
-                chalk.cyan('             -l, --log       ') + 'output log' + '\n' +
-                chalk.cyan('             -v, --version   ') + 'output version'
+                chalk.cyan('           -p, --port      ') + 'specify port; default 3000' + '\n' +
+                chalk.cyan('           -d, --directory ') + 'specify root directory; default .' + '\n' +
+                chalk.cyan('           -s, --silent    ') + 'will not open browser' + '\n' +
+                chalk.cyan('           -w, --watch     ') + 'will watch html,css,js files; once changed, reload pages; default interval 0' + '\n' +
+                chalk.cyan('           -l, --log       ') + 'output log' + '\n' +
+                chalk.cyan('           -v, --version   ') + 'output version'
             );
         } else if (argument.version) {
             log('serve-here: ' + require('./package.json').version);
