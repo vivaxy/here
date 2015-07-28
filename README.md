@@ -66,7 +66,7 @@ or
 
 `here --watch`
 
-default interval is 3 seconds
+default interval is 0 seconds
 
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
