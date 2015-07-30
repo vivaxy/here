@@ -4,6 +4,18 @@
  */
 document.body.innerHTML += '<p>js ok</p>';
 
+var ajax = function () {
+    var req = new XMLHttpRequest();
+    req.open('GET', './mock-server/ajax', true);
+    req.addEventListener('readystatechange', function () {
+        if (req.readyState === 4 && req.status === 200) {
+            var response = JSON.parse(req.responseText);
+            console.log(response);
+        }
+    });
+    req.send();
+};
+
 var socket = new WebSocket('ws://127.0.0.1:13000');
 socket.onopen = function () {
     console.log(arguments);
@@ -13,7 +25,7 @@ socket.onclose = function () {
 };
 socket.onmessage = function (data) {
     console.log(data);
-    if (data.data === 'reload'){
+    if (data.data === 'reload') {
         location.reload();
     }
 };
