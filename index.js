@@ -3,64 +3,53 @@
  * @since 150130 17:29
  * @author vivaxy
  */
-var chalk = require('chalk'),
-    
-    log = require('./lib/log'),
+var commander = require('commander'),
+
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
-    argument = require('./lib/argument'),
 
     /**
      * main method
      */
     main = function () {
-        if (argument.help) {
-            log(chalk.cyan('USAGE') +
-                ' ' + 'here' + ' ' +
-                '[-p PORT]' + ' ' +
-                '[-d DIRECTORY]' + ' ' +
-                '[-s]' + ' ' +
-                '[-w INTERVAL(seconds)]' + ' ' +
-                '[-l]' + ' ' +
-                '[-v]' + '\n' +
-                chalk.cyan('           -p, --port      ') + 'specify port; default 3000' + '\n' +
-                chalk.cyan('           -d, --directory ') + 'specify root directory; default .' + '\n' +
-                chalk.cyan('           -s, --silent    ') + 'will not open browser' + '\n' +
-                chalk.cyan('           -w, --watch     ') + 'will watch html,css,js files; once changed, reload pages; default interval 0' + '\n' +
-                chalk.cyan('           -l, --log       ') + 'output log' + '\n' +
-                chalk.cyan('           -v, --version   ') + 'output version'
-            );
-        } else if (argument.version) {
-            log('serve-here: ' + require('./package.json').version);
+        commander
+            .version(require('./package.json').version, '-v --version')
+            .option('-l, --log', 'output log')
+            .option('-s, --silent', 'will not open browser')
+            .option('-w, --watch [interval]', 'will watch html,css,js files; once changed, reload pages')
+            .option('-p, --port [port]', 'specify port', 3000)
+            .option('-d, --directory [directory]', 'specify root directory', '.')
+            .parse(process.argv);
+
+        if (commander.watch === undefined) {
+            new Server({
+                log: commander.log,
+                port: commander.port,
+                watch: false,
+                silent: commander.silent,
+                directory: commander.directory
+            });
         } else {
-            var watcherPort = 13000;
-            if (argument.watch) {
-                var watcher = new Watcher({
+            // commander.watch === true || commander.watch === 0, 1, ...
+            var watcherPort = 13000,
+                watcherInterval = commander.watch === true ? 0 : commander.watch,
+                watcher = new Watcher({
                     port: watcherPort,
-                    log: argument.log,
-                    interval: parseInt(argument.reloadInterval),
-                    directory: argument.directory,
+                    log: commander.log,
+                    interval: watcherInterval * 1000,
+                    directory: commander.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
                         new Server({
-                            log: argument.log,
-                            port: parseInt(argument.port),
-                            watch: argument.watch,
-                            silent: argument.silent,
-                            directory: argument.directory,
+                            log: commander.log,
+                            port: commander.port,
+                            watch: true,
+                            silent: commander.silent,
+                            directory: commander.directory,
                             watcherPort: watcherPort
                         });
                     }
                 });
-            } else {
-                new Server({
-                    log: argument.log,
-                    port: parseInt(argument.port),
-                    watch: argument.watch,
-                    silent: argument.silent,
-                    directory: argument.directory
-                });
-            }
         }
     };
 
