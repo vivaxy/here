@@ -6,17 +6,6 @@
 var assert = require("assert");
 
 /**
- * test argument
- * @type {exports}
- */
-var argument = require('../lib/argument');
-describe('argument', function () {
-    it('should return 3000', function () {
-        assert.equal(3000, argument.port);
-    });
-});
-
-/**
  * test serve
  * @type {serve|exports}
  */
