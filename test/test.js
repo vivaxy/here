@@ -3,7 +3,7 @@
  * @author vivaxy
  */
 
-var assert = require("assert");
+var assert = require('assert');
 
 /**
  * test serve
