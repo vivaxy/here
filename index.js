@@ -3,7 +3,8 @@
  * @since 150130 17:29
  * @author vivaxy
  */
-var commander = require('commander'),
+var Log = require('log-util'),
+    commander = require('commander'),
 
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
@@ -21,9 +22,11 @@ var commander = require('commander'),
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
 
+        log = new Log(commander.log ? 0 : 2);
+
         if (commander.watch === undefined) {
             new Server({
-                log: commander.log,
+                log: log,
                 port: commander.port,
                 watch: false,
                 silent: commander.silent,
@@ -35,13 +38,13 @@ var commander = require('commander'),
                 watcherInterval = commander.watch === true ? 0 : commander.watch,
                 watcher = new Watcher({
                     port: watcherPort,
-                    log: commander.log,
+                    log: log,
                     interval: watcherInterval * 1000,
                     directory: commander.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
                         new Server({
-                            log: commander.log,
+                            log: log,
                             port: commander.port,
                             watch: true,
                             silent: commander.silent,
