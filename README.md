@@ -68,6 +68,21 @@ or
 
 default interval is 0 seconds
 
+#### middleware support
+
+write `here.js` in current directory
+
+```
+module.exports = function (req, res) {
+    // takes node original server arguments
+    console.log(req);
+    res.end('test');
+    // return true , request will continue going to `here` server
+    return false;
+};
+
+```
+
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/serve-here

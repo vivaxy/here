@@ -3,12 +3,24 @@
  * @since 150130 17:29
  * @author vivaxy
  */
-var Log = require('log-util'),
+var path = require('path'),
+
+    Log = require('log-util'),
     commander = require('commander'),
 
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
 
+    newServer = function (commander, log, watch, route) {
+        return new Server({
+            log: log,
+            port: commander.port,
+            watch: watch,
+            silent: commander.silent,
+            directory: commander.directory,
+            route: route
+        });
+    },
     /**
      * main method
      */
@@ -22,16 +34,17 @@ var Log = require('log-util'),
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
 
-        log = new Log(commander.log ? 0 : 2);
+        var log = new Log(commander.log ? 0 : 2),
+            route = {};
+
+        try {
+            route = require(path.join(process.cwd(), 'here.js'));
+        } catch (e) {
+            log.debug('custom route not found');
+        }
 
         if (commander.watch === undefined) {
-            new Server({
-                log: log,
-                port: commander.port,
-                watch: false,
-                silent: commander.silent,
-                directory: commander.directory
-            });
+            newServer(commander, log, false, route);
         } else {
             // commander.watch === true || commander.watch === 0, 1, ...
             var watcherPort = 13000,
@@ -43,14 +56,7 @@ var Log = require('log-util'),
                     directory: commander.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
-                        new Server({
-                            log: log,
-                            port: commander.port,
-                            watch: true,
-                            silent: commander.silent,
-                            directory: commander.directory,
-                            watcherPort: watcherPort
-                        });
+                        newServer(commander, log, true, route);
                     }
                 });
         }
