@@ -13,7 +13,7 @@ local static server
 
 ## installation
 
-`sudo npm install -g serve-here`
+`[sudo] npm install -g serve-here`
 
 ## usage
 
