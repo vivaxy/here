@@ -11,6 +11,14 @@ var path = require('path'),
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
 
+    /**
+     * new Server();
+     * @param commander
+     * @param log
+     * @param watch
+     * @param route
+     * @returns {Server|exports|module.exports}
+     */
     newServer = function (commander, log, watch, route) {
         return new Server({
             log: log,
@@ -37,16 +45,18 @@ var path = require('path'),
         var log = new Log(commander.log ? 0 : 2),
             route = {};
 
+        /**
+         * read custom route
+         */
         try {
             route = require(path.join(process.cwd(), 'here.js'));
         } catch (e) {
             log.debug('custom route not found');
         }
-
+        
         if (commander.watch === undefined) {
             newServer(commander, log, false, route);
-        } else {
-            // commander.watch === true || commander.watch === 0, 1, ...
+        } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
             var watcherPort = 13000,
                 watcherInterval = commander.watch === true ? 0 : commander.watch,
                 watcher = new Watcher({
