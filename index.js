@@ -98,3 +98,5 @@ var path = require('path'),
     };
 
 main();
+
+module.exports = main;
