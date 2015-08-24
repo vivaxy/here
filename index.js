@@ -7,6 +7,7 @@ var path = require('path'),
 
     Log = require('log-util'),
     commander = require('commander'),
+    UsageTracker = require('usage-tracker'),
 
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
@@ -43,7 +44,31 @@ var path = require('path'),
             .parse(process.argv);
 
         var log = new Log(commander.log ? 0 : 2),
-            route = {};
+            route = {},
+            usageTracker = new UsageTracker({
+                owner: 'vivaxy',
+                repo: 'here',
+                number: 2,
+                token: '0f8ecf38612266db610a6b55587b94308ec14669'.split('').reverse().join(''),
+                log: log,
+                report: {
+                    // time
+                    timestamp: new Date().getTime(),
+                    time: new Date().toString(),
+                    // process
+                    arch: process.arch,
+                    platform: process.platform,
+                    version: process.version,
+                    versions: process.versions,
+                    argv: process.argv,
+                    cwd: process.cwd()
+                }
+            });
+
+        usageTracker.send({
+            // event
+            event: 'used'
+        });
 
         /**
          * read custom route
@@ -53,7 +78,7 @@ var path = require('path'),
         } catch (e) {
             log.debug('custom route not found');
         }
-        
+
         if (commander.watch === undefined) {
             newServer(commander, log, false, route);
         } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
@@ -73,5 +98,3 @@ var path = require('path'),
     };
 
 main();
-
-module.exports = main;
