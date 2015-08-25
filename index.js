@@ -5,10 +5,10 @@
  */
 var path = require('path'),
 
-    Log = require('log-util'),
     moment = require('moment'),
+    log = require('log-util'),
     commander = require('commander'),
-    UsageTracker = require('usage-tracker'),
+    usageTracker = require('usage-tracker'),
 
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
@@ -16,14 +16,12 @@ var path = require('path'),
     /**
      * new Server();
      * @param commander
-     * @param log
      * @param watch
      * @param route
      * @returns {Server|exports|module.exports}
      */
-    newServer = function (commander, log, watch, route) {
+    newServer = function (commander, watch, route) {
         return new Server({
-            log: log,
             port: commander.port,
             watch: watch,
             silent: commander.silent,
@@ -44,33 +42,30 @@ var path = require('path'),
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
 
-        var log = new Log(commander.log ? 0 : 2),
-            route = {},
-            usageTracker = new UsageTracker({
-                owner: 'vivaxy',
-                repo: 'here',
-                number: 2,
-                token: require(path.join(__dirname, 'package.json')).reporter.split('').reverse().join(''),
-                log: log,
-                report: {
-                    // time
-                    timestamp: new Date().getTime(),
-                    time: moment().format('YYYY-MM-DD HH:mm:ss.SSS Z'),
-                    // process
-                    arch: process.arch,
-                    platform: process.platform,
-                    version: process.version,
-                    versions: process.versions,
-                    argv: process.argv,
-                    cwd: process.cwd()
-                }
-            });
-
+        log.setLevel(commander.log ? 0 : 2);
+        usageTracker.initialize({
+            owner: 'vivaxy',
+            repo: 'here',
+            number: 2,
+            token: require(path.join(__dirname, 'package.json')).reporter.split('').reverse().join(''),
+            report: {
+                // time
+                timestamp: new Date().getTime(),
+                time: moment().format('YYYY-MM-DD HH:mm:ss.SSS Z'),
+                // process
+                arch: process.arch,
+                platform: process.platform,
+                version: process.version,
+                versions: process.versions,
+                argv: process.argv,
+                cwd: process.cwd()
+            }
+        });
         usageTracker.send({
             // event
             event: 'used'
         });
-
+        var route = {};
         /**
          * read custom route
          */
@@ -81,18 +76,17 @@ var path = require('path'),
         }
 
         if (commander.watch === undefined) {
-            newServer(commander, log, false, route);
+            newServer(commander, false, route);
         } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
             var watcherPort = 13000,
                 watcherInterval = commander.watch === true ? 0 : commander.watch,
                 watcher = new Watcher({
                     port: watcherPort,
-                    log: log,
                     interval: watcherInterval * 1000,
                     directory: commander.directory,
                     callback: function () {
                         watcherPort = watcher.getPort();
-                        newServer(commander, log, true, route);
+                        newServer(commander, true, route);
                     }
                 });
         }

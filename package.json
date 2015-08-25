@@ -1,6 +1,6 @@
 {
   "name": "serve-here",
-  "version": "2.6.5",
+  "version": "2.6.6",
   "description": "local static server",
   "homepage": "https://github.com/vivaxy/here",
   "bin": {
@@ -45,10 +45,10 @@
     "debounce": "^1.0.0",
     "ip": "^0.3.3",
     "jade": "^1.11.0",
-    "log-util": "^1.0.2",
+    "log-util": "^1.1.0",
     "mime": "^1.3.4",
     "moment": "^2.10.6",
-    "usage-tracker": "^1.0.3",
+    "usage-tracker": "^1.1.0",
     "ws": "^0.8.0"
   },
   "reporter": "0f8ecf38612266db610a6b55587b94308ec14669"
