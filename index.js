@@ -6,6 +6,7 @@
 var path = require('path'),
 
     Log = require('log-util'),
+    moment = require('moment'),
     commander = require('commander'),
     UsageTracker = require('usage-tracker'),
 
@@ -54,7 +55,7 @@ var path = require('path'),
                 report: {
                     // time
                     timestamp: new Date().getTime(),
-                    time: new Date().toString(),
+                    time: moment().format('YYYY-MM-DD HH:mm:ss.SSS Z'),
                     // process
                     arch: process.arch,
                     platform: process.platform,
