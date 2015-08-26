@@ -5,7 +5,6 @@
  */
 var path = require('path'),
 
-    moment = require('moment'),
     log = require('log-util'),
     commander = require('commander'),
     usageTracker = require('usage-tracker'),
@@ -47,18 +46,9 @@ var path = require('path'),
             owner: 'vivaxy',
             repo: 'here',
             number: 2,
-            token: require(path.join(__dirname, 'package.json')).reporter.split('').reverse().join(''),
+            token: require('./package.json').reporter.split('').reverse().join(''),
             report: {
-                // time
-                timestamp: new Date().getTime(),
-                time: moment().format('YYYY-MM-DD HH:mm:ss.SSS Z'),
-                // process
-                arch: process.arch,
-                platform: process.platform,
-                version: process.version,
-                versions: process.versions,
-                argv: process.argv,
-                cwd: process.cwd()
+                'serve-here-version': require('./package.json').version
             }
         });
         usageTracker.send({
