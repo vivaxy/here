@@ -51,6 +51,13 @@ var path = require('path'),
                 'serve-here-version': require('./package.json').version
             }
         });
+        process.on('uncaughtException', function (err) {
+            usageTracker.send({
+                // error
+                // JSON.stringify(err) will convert err to `{}`
+                error: err.toString()
+            });
+        });
         usageTracker.send({
             // event
             event: 'used'
