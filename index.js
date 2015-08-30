@@ -51,14 +51,18 @@ var path = require('path'),
                 'serve-here-version': require('./package.json').version
             }
         });
-        process.on('uncaughtException', function (err) {
+        process.on('uncaughtException', function (e) {
             usageTracker.send({
-                // error
                 // JSON.stringify(err) will convert err to `{}`
-                error: err.toString()
+                // use error.stack for more details
+                // todo how to preserve the original error output format?
+                error: e.stack.split('\n')
             });
-            // preserve default behaviour
-            throw err;
+            // throw this to preserve default behaviour
+            // console this instead of throw error to keep the original error trace
+            log.error(e.stack);
+            // still exit as uncaught exception
+            process.exit(1);
         });
         usageTracker.send({
             // event
