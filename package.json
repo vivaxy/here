@@ -50,5 +50,5 @@
     "usage-tracker": "^1.1.1",
     "ws": "^0.8.0"
   },
-  "reporter": "0f8ecf38612266db610a6b55587b94308ec14669"
+  "usage-tracker-id": "0f8ecf38612266db610a6b55587b94308ec14669"
 }

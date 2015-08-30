@@ -46,7 +46,7 @@ var path = require('path'),
             owner: 'vivaxy',
             repo: 'here',
             number: 2,
-            token: require('./package.json').reporter.split('').reverse().join(''),
+            token: require('./package.json')['usage-tracker-id'].split('').reverse().join(''),
             report: {
                 'serve-here-version': require('./package.json').version
             }
@@ -57,6 +57,8 @@ var path = require('path'),
                 // JSON.stringify(err) will convert err to `{}`
                 error: err.toString()
             });
+            // preserve default behaviour
+            throw err;
         });
         usageTracker.send({
             // event
