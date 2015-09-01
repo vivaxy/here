@@ -52,17 +52,24 @@ var path = require('path'),
             }
         });
         process.on('uncaughtException', function (e) {
-            usageTracker.send({
-                // JSON.stringify(err) will convert err to `{}`
-                // use error.stack for more details
-                // todo how to preserve the original error output format?
-                error: e.stack.split('\n')
-            });
+            new usageTracker.UsageTracker({
+                owner: 'vivaxy',
+                repo: 'here',
+                number: 4,
+                token: require('./package.json')['usage-tracker-id'].split('').reverse().join(''),
+                report: {
+                    'serve-here-version': require('./package.json').version
+                }
+            }).send({
+                    // JSON.stringify(err) will convert err to `{}`
+                    // use error.stack for more details
+                    error: e.stack.split('\n')
+                });
             // throw this to preserve default behaviour
             // console this instead of throw error to keep the original error trace
             log.error(e.stack);
             // still exit as uncaught exception
-            process.exit(1);
+            //process.exit(1);
         });
         usageTracker.send({
             // event
@@ -86,12 +93,11 @@ var path = require('path'),
                 watcher = new Watcher({
                     port: watcherPort,
                     interval: watcherInterval * 1000,
-                    directory: commander.directory,
-                    callback: function () {
+                    directory: commander.directory
+                }).on('success', function () {
                         watcherPort = watcher.getPort();
                         newServer(commander, true, route);
-                    }
-                });
+                    });
         }
     };
 
