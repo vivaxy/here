@@ -60,7 +60,11 @@ var path = require('path'),
                 report: {
                     'serve-here-version': require('./package.json').version
                 }
-            }).send({
+            }).on('end', function () {
+                    process.exit(1);
+                }).on('err', function () {
+                    process.exit(1);
+                }).send({
                     // JSON.stringify(err) will convert err to `{}`
                     // use error.stack for more details
                     error: e.stack.split('\n')
@@ -69,7 +73,6 @@ var path = require('path'),
             // console this instead of throw error to keep the original error trace
             log.error(e.stack);
             // still exit as uncaught exception
-            //process.exit(1);
         });
         usageTracker.send({
             // event
