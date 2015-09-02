@@ -17,15 +17,17 @@ var path = require('path'),
      * @param commander
      * @param watch
      * @param route
+     * @param watcherPort
      * @returns {Server|exports|module.exports}
      */
-    newServer = function (commander, watch, route) {
+    newServer = function (commander, watch, route, watcherPort) {
         return new Server({
             port: commander.port,
             watch: watch,
             silent: commander.silent,
             directory: commander.directory,
-            route: route
+            route: route,
+            watcherPort: watcherPort
         });
     },
     /**
@@ -89,7 +91,7 @@ var path = require('path'),
         }
 
         if (commander.watch === undefined) {
-            newServer(commander, false, route);
+            newServer(commander, false, route, 13000);
         } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
             var watcherPort = 13000,
                 watcherInterval = commander.watch === true ? 0 : commander.watch,
@@ -99,7 +101,7 @@ var path = require('path'),
                     directory: commander.directory
                 }).on('success', function () {
                         watcherPort = watcher.getPort();
-                        newServer(commander, true, route);
+                        newServer(commander, true, route, watcherPort);
                     });
         }
     };
