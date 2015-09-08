@@ -68,6 +68,8 @@ or
 
 default interval is 0 seconds
 
+recommend to set interval to page reload time
+
 #### middleware support
 
 write `here.js` in current directory
