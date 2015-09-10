@@ -12,6 +12,7 @@ var path = require('path'),
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
 
+    debug = true,
     /**
      * new Server();
      * @param commander
@@ -38,13 +39,13 @@ var path = require('path'),
             .version(require('./package.json').version, '-v --version')
             .option('-l, --log', 'output log')
             .option('-s, --silent', 'will not open browser')
-            .option('-w, --watch [interval]', 'will watch html,css,js files; once changed, reload pages')
+            .option('-w, --watch', 'will watch js,css,html files; once changed, reload pages')
             .option('-p, --port [port]', 'specify port', 3000)
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
 
         log.setLevel(commander.log ? 0 : 2);
-        usageTracker.initialize({
+        debug || usageTracker.initialize({
             owner: 'vivaxy',
             repo: 'here',
             number: 2,
@@ -53,7 +54,7 @@ var path = require('path'),
                 'serve-here-version': require('./package.json').version
             }
         });
-        process.on('uncaughtException', function (e) {
+        debug || process.on('uncaughtException', function (e) {
             new usageTracker.UsageTracker({
                 owner: 'vivaxy',
                 repo: 'here',
@@ -76,7 +77,7 @@ var path = require('path'),
             log.error(e.stack);
             // still exit as uncaught exception
         });
-        usageTracker.send({
+        debug || usageTracker.send({
             // event
             event: 'used'
         });
@@ -90,19 +91,17 @@ var path = require('path'),
             log.debug('custom route not found');
         }
 
-        if (commander.watch === undefined) {
-            newServer(commander, false, route, 13000);
-        } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
+        if (commander.watch) {
             var watcherPort = 13000,
-                watcherInterval = commander.watch === true ? 0 : commander.watch,
                 watcher = new Watcher({
                     port: watcherPort,
-                    interval: watcherInterval * 1000,
                     directory: commander.directory
                 }).on('success', function () {
                         watcherPort = watcher.getPort();
                         newServer(commander, true, route, watcherPort);
                     });
+        } else {
+            newServer(commander, false, route, 13000);
         }
     };
 

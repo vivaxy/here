@@ -11,6 +11,8 @@
 
 local static server
 
+resolve get, post... every method into local files
+
 ## installation
 
 `[sudo] npm install -g serve-here`
@@ -84,6 +86,12 @@ module.exports = function (req, res) {
 };
 
 ```
+
+## some similar applications
+
+- [puer](https://www.npmjs.com/package/puer) not support post
+
+- [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
