@@ -12,7 +12,6 @@ var path = require('path'),
     Server = require('./lib/server'),
     Watcher = require('./lib/watcher'),
 
-    debug = true,
     /**
      * new Server();
      * @param commander
@@ -45,7 +44,7 @@ var path = require('path'),
             .parse(process.argv);
 
         log.setLevel(commander.log ? 0 : 2);
-        debug || usageTracker.initialize({
+        usageTracker.initialize({
             owner: 'vivaxy',
             repo: 'here',
             number: 2,
@@ -54,7 +53,7 @@ var path = require('path'),
                 'serve-here-version': require('./package.json').version
             }
         });
-        debug || process.on('uncaughtException', function (e) {
+        process.on('uncaughtException', function (e) {
             new usageTracker.UsageTracker({
                 owner: 'vivaxy',
                 repo: 'here',
@@ -77,7 +76,7 @@ var path = require('path'),
             log.error(e.stack);
             // still exit as uncaught exception
         });
-        debug || usageTracker.send({
+        usageTracker.send({
             // event
             event: 'used'
         });

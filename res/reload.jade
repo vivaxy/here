@@ -1,0 +1,8 @@
+//- @since 15-09-10 15:53
+//- @author vivaxy
+script.
+    new WebSocket('ws://' + location.hostname + '#{watcherPort}').addEventListener('message', function (message) {
+        if (message.data === 'reload') {
+            location.reload();
+        }
+    });
