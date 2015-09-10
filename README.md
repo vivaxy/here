@@ -89,7 +89,7 @@ module.exports = function (req, res) {
 
 ## some similar applications
 
-- [puer](https://www.npmjs.com/package/puer) not support post
+- [puer](https://www.npmjs.com/package/puer) not support post, not response files without extension as 'application/json'
 
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 
