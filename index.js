@@ -38,7 +38,7 @@ var path = require('path'),
             .version(require('./package.json').version, '-v --version')
             .option('-l, --log', 'output log')
             .option('-s, --silent', 'will not open browser')
-            .option('-w, --watch [interval]', 'will watch js,css,html files; once changed, reload pages', 0)
+            .option('-w, --watch [interval]', 'will watch js,css,html files; once changed, reload pages')
             .option('-p, --port [port]', 'specify port', 3000)
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
