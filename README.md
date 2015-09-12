@@ -11,7 +11,21 @@
 
 local static server
 
-resolve get, post... every method into local files
+## feature
+
+- look up available port automatically, which means multiple instances without specifying port
+
+- custom routes
+
+- live reload
+
+- open default browser after server launched
+
+- add ip address to your server, which makes your server available to other devices
+
+- resolve get, post... every method into local files, for ajax
+
+- respond files without extension as `application/json` for ajax
 
 ## installation
 
@@ -89,7 +103,7 @@ module.exports = function (req, res) {
 
 ## some similar applications
 
-- [puer](https://www.npmjs.com/package/puer) not support post, not response files without extension as 'application/json'
+- [puer](https://www.npmjs.com/package/puer) not support post, respond files without extension as `application/octet-stream`
 
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 

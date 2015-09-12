@@ -38,7 +38,7 @@ var path = require('path'),
             .version(require('./package.json').version, '-v --version')
             .option('-l, --log', 'output log')
             .option('-s, --silent', 'will not open browser')
-            .option('-w, --watch', 'will watch js,css,html files; once changed, reload pages')
+            .option('-w, --watch [interval]', 'will watch js,css,html files; once changed, reload pages', 0)
             .option('-p, --port [port]', 'specify port', 3000)
             .option('-d, --directory [directory]', 'specify root directory', '.')
             .parse(process.argv);
@@ -90,17 +90,18 @@ var path = require('path'),
             log.debug('custom route not found');
         }
 
-        if (commander.watch) {
+        if (commander.watch === undefined) {
+            newServer(commander, false, route, 13000);
+        } else { // -w or -w 3  commander.watch === true || commander.watch === 0, 1, ...
             var watcherPort = 13000,
                 watcher = new Watcher({
                     port: watcherPort,
+                    interval: (commander.watch === true ? 0 : commander.watch) * 1000,
                     directory: commander.directory
                 }).on('success', function () {
                         watcherPort = watcher.getPort();
                         newServer(commander, true, route, watcherPort);
                     });
-        } else {
-            newServer(commander, false, route, 13000);
         }
     };
 
