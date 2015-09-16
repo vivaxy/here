@@ -27,6 +27,8 @@ local static server
 
 - respond files without extension as `application/json` for ajax
 
+- when the server is on, press `enter` will open the browser
+
 ## installation
 
 `[sudo] npm install -g serve-here`

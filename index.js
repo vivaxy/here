@@ -21,14 +21,20 @@ var path = require('path'),
      * @returns {Server|exports|module.exports}
      */
     newServer = function (commander, watch, route, watcherPort) {
-        return new Server({
+        var server = new Server({
             port: commander.port,
             watch: watch,
             silent: commander.silent,
             directory: commander.directory,
             route: route,
             watcherPort: watcherPort
-        });
+        }).on('start', function (msg) {
+                process.stdin.setEncoding('utf8');
+                process.stdin.on('data', function () {
+                    server.openBrowser(msg.openUrl);
+                });
+            });
+        return server;
     },
     /**
      * main method
