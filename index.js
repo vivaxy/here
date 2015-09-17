@@ -28,10 +28,10 @@ var path = require('path'),
             directory: commander.directory,
             route: route,
             watcherPort: watcherPort
-        }).on('start', function (msg) {
+        }).on('start', function () {
                 process.stdin.setEncoding('utf8');
                 process.stdin.on('data', function () {
-                    server.openBrowser(msg.openUrl);
+                    server.openBrowser();
                 });
             });
         return server;
