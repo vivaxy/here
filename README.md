@@ -115,7 +115,7 @@ module.exports = function (req, res) {
 [npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat-square
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
-[travis-image]: https://travis-ci.org/vivaxy/here.svg?branch=master
+[travis-image]: https://img.shields.io/travis/vivaxy/here.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vivaxy/here
 [david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
 [david-url]: https://david-dm.org/vivaxy/here
