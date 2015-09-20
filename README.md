@@ -1,11 +1,10 @@
 #serve-*here*
 
+[![Build Status][travis-image]][travis-url]
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
-[![Build Status][travis-image]][travis-url]
 [![Dependency Status][david-image]][david-url]
-[![Gittip][gittip-image]][gittip-url]
 
 [![NPM][nodei-image]][nodei-url]
 
@@ -119,7 +118,5 @@ module.exports = function (req, res) {
 [travis-url]: https://travis-ci.org/vivaxy/here
 [david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
 [david-url]: https://david-dm.org/vivaxy/here
-[gittip-image]: https://img.shields.io/gittip/vivaxy.svg?style=flat-square
-[gittip-url]: https://www.gittip.com/vivaxy/
 [nodei-image]: https://nodei.co/npm-dl/serve-here.png?height=3
 [nodei-url]: https://nodei.co/npm/serve-here/
