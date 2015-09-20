@@ -110,16 +110,16 @@ module.exports = function (req, res) {
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 
 
-[npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat
+[npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/serve-here
-[npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat
-[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat-square
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
 [travis-image]: https://travis-ci.org/vivaxy/here.svg?branch=master
 [travis-url]: https://travis-ci.org/vivaxy/here
-[david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat
+[david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
 [david-url]: https://david-dm.org/vivaxy/here
-[gittip-image]: https://img.shields.io/gittip/vivaxy.svg?style=flat
+[gittip-image]: https://img.shields.io/gittip/vivaxy.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/vivaxy/
 [nodei-image]: https://nodei.co/npm-dl/serve-here.png?height=3
 [nodei-url]: https://nodei.co/npm/serve-here/
