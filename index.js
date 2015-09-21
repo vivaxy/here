@@ -41,7 +41,7 @@ var path = require('path'),
      */
     main = function () {
         commander
-            .version(require('./package.json').version, '-v --version')
+            .version(require('./package.json').version, '-v, --version')
             .option('-l, --log', 'output log')
             .option('-s, --silent', 'will not open browser')
             .option('-w, --watch [interval]', 'will watch js,css,html files; once changed, reload pages')
