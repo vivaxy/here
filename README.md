@@ -8,6 +8,8 @@
 
 [![NPM][nodei-image]][nodei-url]
 
+[![NPM][nodei-dl-image]][nodei-url]
+
 local static server
 
 ## feature
@@ -120,5 +122,6 @@ module.exports = function (req, res) {
 [travis-url]: https://travis-ci.org/vivaxy/here
 [david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
 [david-url]: https://david-dm.org/vivaxy/here
-[nodei-image]: https://nodei.co/npm-dl/serve-here.png?height=3
+[nodei-dl-image]: https://nodei.co/npm-dl/serve-here.png?height=3
 [nodei-url]: https://nodei.co/npm/serve-here/
+[nodei-image]: https://nodei.co/npm/serve-here.svg?downloads=true&downloadRank=true&stars=true

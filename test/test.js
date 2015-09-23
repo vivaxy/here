@@ -2,10 +2,7 @@
  * @since 150201 12:29
  * @author vivaxy
  */
-
 var assert = require('assert');
-
-// todo test all
 /**
  * test serve
  * @type {serve|exports}

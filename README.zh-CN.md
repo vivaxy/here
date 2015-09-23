@@ -8,6 +8,8 @@
 
 [![NPM][nodei-image]][nodei-url]
 
+[![NPM][nodei-dl-image]][nodei-url]
+
 本地静态服务器
 
 ## 特点
@@ -122,3 +124,4 @@ module.exports = function (req, res) {
 [david-url]: https://david-dm.org/vivaxy/here
 [nodei-image]: https://nodei.co/npm-dl/serve-here.png?height=3
 [nodei-url]: https://nodei.co/npm/serve-here/
+[nodei-image]: https://nodei.co/npm/serve-here.svg?downloads=true&downloadRank=true&stars=true
