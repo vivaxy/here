@@ -56,7 +56,7 @@ or
 
 `here --directory test`
 
-default directory is ./
+default directory is `./`
 
 #### do not open the browser
 
@@ -86,6 +86,8 @@ or
 default interval is 0 seconds
 
 recommend to set interval to page reload time
+
+not recommended to use this function in huge project which containing too much files
 
 #### middleware support
 
