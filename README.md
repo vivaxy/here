@@ -12,11 +12,15 @@
 
 local static server
 
+Everything start from `here`
+
+## [中文说明](./doc/README.zh-CN.md)
+
 ## feature
 
 - look up available port automatically, which means multiple instances without specifying port
 
-- custom routes
+- custom routes by scripting `here.js`
 
 - live reload
 
