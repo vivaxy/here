@@ -1,6 +1,6 @@
 {
   "name": "serve-here",
-  "version": "2.7.5",
+  "version": "2.7.6",
   "description": "local static server",
   "homepage": "https://github.com/vivaxy/here",
   "bin": {
