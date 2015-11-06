@@ -79,7 +79,7 @@ or
 
 or
 
-`here --log`
+`here --log 0`
 
 
 #### watch file changes, once html,js,css file changed, reload pages
