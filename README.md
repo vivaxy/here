@@ -63,19 +63,13 @@ or
 
 default directory is `./`
 
-#### watch file changes, once html,js,css file changed, reload pages
+#### watch file changes, once files changed, reload pages
 
-`here -w 3`
+`here -w`
 
 or
 
 `here --watch`
-
-default interval is 0 seconds
-
-recommend to set interval to page reload time
-
-not recommended to use this function in huge project which containing too much files
 
 #### do not open the browser
 

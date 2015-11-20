@@ -7,4 +7,4 @@
 
 process.env.NODE_ENV = 'debug';
 
-require('./lib/main.js')();
+require('./lib/application.js')();

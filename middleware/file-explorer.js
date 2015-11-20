@@ -9,6 +9,7 @@ const path = require('path');
 const mime = require('mime');
 const log = require('log-util');
 
+const readFile = require('../lib/read-file.js');
 const buildFileBrowser = require('../lib/build-file-list.js');
 const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
@@ -20,29 +21,23 @@ const readFolder = folder => {
     };
 };
 
-const readFile = file=> {
-    return done => {
-        return fs.readFile(file, done);
-    };
-};
-
 const lStat = pathname => {
     return done => {
         return fs.lstat(pathname, done);
     };
 };
 
-module.exports = (workingDirectory) => {
+module.exports = (absoluteWorkingDirectory) => {
     return function* (next) {
         let requestPath = this.request.path;
-        var fullRequestPath = path.join(workingDirectory, requestPath);
+        let fullRequestPath = path.join(absoluteWorkingDirectory, requestPath);
         let stat = yield lStat(fullRequestPath);
         if (stat.isDirectory()) {
             let files = yield readFolder(fullRequestPath);
             if (~files.indexOf(INDEX_PAGE)) {
                 this.redirect(path.join(requestPath, INDEX_PAGE), '/');
             } else {
-                this.body = buildFileBrowser(files, requestPath, workingDirectory);
+                this.body = buildFileBrowser(files, requestPath, absoluteWorkingDirectory);
                 this.type = mime.lookup(INDEX_PAGE);
             }
         } else if (stat.isFile()) {
@@ -52,7 +47,7 @@ module.exports = (workingDirectory) => {
                 type = FALLBACK_CONTENT_TYPE;
             }
             this.type = type;
-            log.debug('server : ', this.request.method, requestPath, 'AS', type);
+            log.debug('server :', this.request.method, requestPath, '->', type);
         }
         yield next;
     };
