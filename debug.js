@@ -4,6 +4,7 @@
  * @author vivaxy
  */
 'use strict';
+
 process.env.NODE_ENV = 'debug';
 
 require('./lib/main.js')();
