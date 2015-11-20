@@ -3,6 +3,7 @@
  * @author vivaxy
  */
 'use strict';
+
 const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
 module.exports = function* (next) {

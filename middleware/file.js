@@ -27,6 +27,6 @@ module.exports = (workingDirectory) => {
             type = FALLBACK_CONTENT_TYPE;
         }
         this.type = type;
-        log.debug(this.request.method, requestPath, type);
+        log.debug('server : ', this.request.method, requestPath, type);
     };
 };
