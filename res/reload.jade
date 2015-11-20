@@ -2,7 +2,7 @@
 //- @author vivaxy
 
 script.
-    new WebSocket('ws://' + location.hostname + ':#{watcherPort}').addEventListener('message', function (message) {
+    new WebSocket('ws://' + location.hostname + ':' + location.port).addEventListener('message', function (message) {
         if (message.data === 'reload') {
             location.reload();
         }

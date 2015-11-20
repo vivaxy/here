@@ -11,13 +11,15 @@ html
 
             a {
                 display: block;
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
                 height: 48px;
                 width: 100%;
                 text-decoration: none;
                 background-color: #fff;
                 border-bottom: 1px solid #ddd;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+                -webkit-user-select: none;
                 overflow: hidden;
+                position: relative;
             }
 
             a span {
@@ -73,3 +75,64 @@ html
         each val in list
             a(href=val.href)
                 span(class=val.className) #{val.fileName}
+        script.
+            'use strict';
+            
+            let RippleButton = function (element) {
+
+                let ripple = document.createElement('div');
+                let animationDuration = 400;
+
+                let startHandler = (e) => {
+                    e.stopPropagation();
+                    let rect = element.getBoundingClientRect();
+                    let rippleStyle = ripple.style;
+                    let rippleRadius = Math.sqrt(rect.width * rect.width + rect.height * rect.height);
+
+                    rippleStyle.position = 'absolute';
+                    rippleStyle.width = rippleRadius * 2 + 'px';
+                    rippleStyle.height = rippleRadius * 2 + 'px';
+                    rippleStyle.borderRadius = '50%';
+                    rippleStyle.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                    rippleStyle.opacity = '1';
+                    rippleStyle.transform = 'scale(0)';
+
+                    let touch = e && e.touches && e.touches.length ? e.touches[0] : e;
+                    let x = touch.clientX - rect.left;
+                    let y = touch.clientY - rect.top;
+                    rippleStyle.left = x - rippleRadius + 'px';
+                    rippleStyle.top = y - rippleRadius + 'px';
+
+                    element.appendChild(ripple);
+
+                    setTimeout(() => {
+                        rippleStyle.transition = 'transform ' + animationDuration + 'ms ease-out, opacity ' + animationDuration + 'ms ease-out';
+                        rippleStyle.transform = 'scale(1)';
+                    }, 0);
+                };
+
+                element.addEventListener('touchstart', startHandler);
+                element.addEventListener('MSPointerDown', startHandler);
+                element.addEventListener('pointerdown', startHandler);
+                element.addEventListener('mousedown', startHandler);
+
+                let endHandler = () => {
+                    ripple.style.opacity = '0';
+                    setTimeout(() => {
+                        if (~Array.prototype.indexOf.call(element.children, ripple)) {
+                            element.removeChild(ripple);
+                        }
+                    }, animationDuration);
+                };
+
+                element.addEventListener('touchcancel', endHandler);
+                element.addEventListener('touchend', endHandler);
+                element.addEventListener('pointerup', endHandler);
+                element.addEventListener('MSPointerUp', endHandler);
+                element.addEventListener('mouseup', endHandler);
+                element.addEventListener('mouseout', endHandler);
+
+            };
+            Array.prototype.forEach.call(document.querySelectorAll('a'), a => {
+                new RippleButton(a);
+            });
