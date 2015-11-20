@@ -3,8 +3,14 @@
  * @author vivaxy
  */
 'use strict';
-module.exports = function (req, res) {
-    console.log(req);
-    res.end('test');
-    return false;
-};
+
+module.exports = [
+    function* (next) {
+        console.log(this.request.path);
+        if (this.request.path === '/test') {
+            this.body = 'test';
+            return;
+        }
+        yield next;
+    }
+];

@@ -5,4 +5,5 @@
  */
 'use strict';
 process.env.NODE_ENV = 'debug';
-require('./lib/server.js')();
+
+require('./lib/main.js')();

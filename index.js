@@ -5,4 +5,4 @@
  */
 'use strict';
 
-require('./lib/server.js')();
+require('./lib/main.js')();

@@ -15,8 +15,6 @@ local static server
 
 Everything start from `here`
 
-## [中文说明](./doc/README.zh-CN.md)
-
 ## feature
 
 - look up available port automatically, which means multiple instances without specifying port
@@ -73,15 +71,6 @@ or
 
 `here --silent`
 
-#### output log
-
-`here -l`
-
-or
-
-`here --log 0`
-
-
 #### watch file changes, once html,js,css file changed, reload pages
 
 `here -w 3`
@@ -101,13 +90,18 @@ not recommended to use this function in huge project which containing too much f
 write `here.js` in current directory
 
 ```
-module.exports = function (req, res) {
-    // takes node original server arguments
-    console.log(req);
-    res.end('test');
-    // return true , request will continue going to `here` server
-    return false;
-};
+'use strict';
+
+module.exports = [
+    function* (next) {
+        console.log(this.request.path);
+        if (this.request.path === '/test') {
+            this.body = 'test';
+            return;
+        }
+        yield next;
+    }
+];
 
 ```
 
