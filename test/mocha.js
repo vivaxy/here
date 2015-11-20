@@ -37,28 +37,6 @@ describe('test terminal command `here`', function () {
             done();
         });
     });
-    it('`here -w` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher : listen http://*.*.*.*:*/`', function (done) {
-        here = spawn('node', ['./index.js', '-w']);
-        var stdoutCount = 0;
-        here.stdout.on('data', function (data) {
-            stdoutCount++;
-            data = data.toString();
-            switch (stdoutCount) {
-                case 1:
-                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
-                    break;
-                case 2:
-                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
-                    here.kill();
-                    done();
-                    break;
-                default:
-                    assert.fail(stdoutCount, 2);
-                    done();
-                    break;
-            }
-        });
-    });
     it('`here -h` should output help', function (done) {
         here = spawn('node', ['./index.js', '-h']);
         here.stdout.on('data', function (data) {

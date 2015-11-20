@@ -63,14 +63,6 @@ or
 
 default directory is `./`
 
-#### do not open the browser
-
-`here -s`
-
-or
-
-`here --silent`
-
 #### watch file changes, once html,js,css file changed, reload pages
 
 `here -w 3`
@@ -84,6 +76,22 @@ default interval is 0 seconds
 recommend to set interval to page reload time
 
 not recommended to use this function in huge project which containing too much files
+
+#### do not open the browser
+
+`here -s`
+
+or
+
+`here --silent`
+
+#### output log
+
+`here -l`
+
+or
+
+`here --log 0`
 
 #### middleware support
 
