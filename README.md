@@ -108,7 +108,6 @@ module.exports = [
         yield next;
     }
 ];
-
 ```
 
 ## some similar applications
@@ -117,6 +116,7 @@ module.exports = [
 
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 
+- [browsersync](http://www.browsersync.io/)
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/serve-here
