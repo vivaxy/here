@@ -65,11 +65,15 @@ default directory is `./`
 
 #### watch file changes, once files changed, reload pages
 
-`here -w`
+`here -w 3`
 
 or
 
 `here --watch`
+
+default interval is 0 second
+
+recommend to set reload interval to page reload time
 
 #### do not open the browser
 

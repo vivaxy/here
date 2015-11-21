@@ -11,11 +11,11 @@ module.exports = function* (next) {
     yield next;
     if (this.type === 'text/html') {
         let response = '';
-        let body = this.body;
+        let body = this.body.toString('utf-8');
         let reloadJavascript = yield readFile(path.join(__dirname, '../res/reload.js'));
         reloadJavascript = '<script>' + reloadJavascript + '</script>';
         if (~body.indexOf('</head>')) {
-            var section = body.split('</head>');
+            let section = body.split('</head>');
             section.splice(1, 0, reloadJavascript + '</head>');
             response = section.join('');
         } else {
