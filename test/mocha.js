@@ -47,7 +47,7 @@ describe('test terminal command `here`', () => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '-h']);
         here.stdout.on('data', data => {
             data = data.toString();
-            assert.equal(true, !!~data.indexOf('Usage: index [options]') && !!~data.indexOf('Options:'));
+            assert.equal(true, !!~data.indexOf('Usage: debug [options]') && !!~data.indexOf('Options:'));
             done();
         });
     });
