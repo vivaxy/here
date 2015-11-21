@@ -10,13 +10,16 @@ const packageJson = require('../package.json');
 
 const spawn = childProcess.spawn;
 
+const NODE_COMMAND = 'node';
+const HERE_COMMAND = './debug.js';
+
 describe('test terminal command `here`', () => {
     let here;
     afterEach(() => {
         here.kill();
     });
     it('`here` should output `[??:??:??.???] server : listen http://*.*.*.*:*/`', done => {
-        here = spawn('node', ['./index.js']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND]);
         here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
@@ -25,7 +28,7 @@ describe('test terminal command `here`', () => {
         });
     });
     it('`here -v` should output `version`', done => {
-        here = spawn('node', ['./index.js', '-v']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND, '-v']);
         here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
@@ -33,7 +36,7 @@ describe('test terminal command `here`', () => {
         });
     });
     it('`here --version` should output `version`', done => {
-        here = spawn('node', ['./index.js', '--version']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND, '--version']);
         here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
@@ -41,7 +44,7 @@ describe('test terminal command `here`', () => {
         });
     });
     it('`here -h` should output help', done => {
-        here = spawn('node', ['./index.js', '-h']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND, '-h']);
         here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(true, !!~data.indexOf('Usage: index [options]') && !!~data.indexOf('Options:'));
@@ -49,7 +52,7 @@ describe('test terminal command `here`', () => {
         });
     });
     it('`here -w` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 0 seconds after final change was taken`', done => {
-        here = spawn('node', ['./index.js', '-w']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND, '-w']);
         let stdoutCount = 0;
         here.stdout.on('data', data => {
             stdoutCount++;
@@ -71,7 +74,7 @@ describe('test terminal command `here`', () => {
         });
     });
     it('`here --watch 3` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 3 seconds after final change was taken`', done => {
-        here = spawn('node', ['./index.js', '--watch', '3']);
+        here = spawn(NODE_COMMAND, [HERE_COMMAND, '--watch', '3']);
         let stdOutCount = 0;
         here.stdout.on('data', data => {
             stdOutCount++;
