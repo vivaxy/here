@@ -11,7 +11,7 @@ module.exports = function* (next) {
         yield next;
     } catch (e) {
         this.status = 404;
-        this.body = e.stack.split('\n');
+        this.body = e.stack;
         this.type = FALLBACK_CONTENT_TYPE;
     }
 };

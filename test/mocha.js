@@ -3,46 +3,93 @@
  * @author vivaxy
  */
 'use strict';
-var assert = require('assert');
-var spawn = require('child_process').spawn;
-var packageJson = require('../package.json');
+const assert = require('assert');
+const childProcess = require('child_process');
 
-describe('test terminal command `here`', function () {
-    var here;
-    afterEach(function () {
+const packageJson = require('../package.json');
+
+const spawn = childProcess.spawn;
+
+describe('test terminal command `here`', () => {
+    let here;
+    afterEach(() => {
         here.kill();
     });
-    it('`here` should output `[??:??:??.???] server : listen http://*.*.*.*:*/`', function (done) {
+    it('`here` should output `[??:??:??.???] server : listen http://*.*.*.*:*/`', done => {
         here = spawn('node', ['./index.js']);
-        here.stdout.on('data', function (data) {
+        here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
             here.kill();
             done();
         });
     });
-    it('`here -v` should output `version`', function (done) {
+    it('`here -v` should output `version`', done => {
         here = spawn('node', ['./index.js', '-v']);
-        here.stdout.on('data', function (data) {
+        here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
             done();
         });
     });
-    it('`here --version` should output `version`', function (done) {
+    it('`here --version` should output `version`', done => {
         here = spawn('node', ['./index.js', '--version']);
-        here.stdout.on('data', function (data) {
+        here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
             done();
         });
     });
-    it('`here -h` should output help', function (done) {
+    it('`here -h` should output help', done => {
         here = spawn('node', ['./index.js', '-h']);
-        here.stdout.on('data', function (data) {
+        here.stdout.on('data', data => {
             data = data.toString();
             assert.equal(true, !!~data.indexOf('Usage: index [options]') && !!~data.indexOf('Options:'));
             done();
+        });
+    });
+    it('`here -w` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 0 seconds after final change was taken`', done => {
+        here = spawn('node', ['./index.js', '-w']);
+        let stdoutCount = 0;
+        here.stdout.on('data', data => {
+            stdoutCount++;
+            data = data.toString();
+            switch (stdoutCount) {
+                case 1:
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
+                    break;
+                case 2:
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: pages will be reloaded in 0 seconds after final change was taken\n$/.test(data));
+                    here.kill();
+                    done();
+                    break;
+                default:
+                    assert.fail(stdoutCount, 2);
+                    done();
+                    break;
+            }
+        });
+    });
+    it('`here --watch 3` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 3 seconds after final change was taken`', done => {
+        here = spawn('node', ['./index.js', '--watch', '3']);
+        let stdOutCount = 0;
+        here.stdout.on('data', data => {
+            stdOutCount++;
+            data = data.toString();
+            switch (stdOutCount) {
+                case 1:
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
+                    break;
+                case 2:
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: pages will be reloaded in 3 seconds after final change was taken\n$/.test(data));
+                    here.kill();
+                    done();
+                    break;
+                default:
+                    assert.fail(stdOutCount, 2);
+                    done();
+                    break;
+            }
         });
     });
 });
