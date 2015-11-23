@@ -3,6 +3,7 @@
  * @author vivaxy
  */
 'use strict';
+
 const path = require('path');
 
 const readFile = require('../lib/read-file.js');
