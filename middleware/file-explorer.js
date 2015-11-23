@@ -10,28 +10,19 @@ const mime = require('mime');
 const log = require('log-util');
 
 const readFile = require('../lib/read-file.js');
+const readFolder = require('../lib/read-folder.js');
+const getFileStat = require('../lib/get-file-stat.js');
 const buildFileBrowser = require('../lib/build-file-list.js');
 const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
 const INDEX_PAGE = 'index.html';
 
-const readFolder = folder => {
-    return done=> {
-        return fs.readdir(folder, done);
-    };
-};
-
-const lStat = pathname => {
-    return done => {
-        return fs.lstat(pathname, done);
-    };
-};
-
 module.exports = (absoluteWorkingDirectory) => {
     return function* (next) {
-        let requestPath = this.request.path;
+        // decode for chinese character
+        let requestPath = decodeURIComponent(this.request.path);
         let fullRequestPath = path.join(absoluteWorkingDirectory, requestPath);
-        let stat = yield lStat(fullRequestPath);
+        let stat = yield getFileStat(fullRequestPath);
         if (stat.isDirectory()) {
             let files = yield readFolder(fullRequestPath);
             if (~files.indexOf(INDEX_PAGE)) {
