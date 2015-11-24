@@ -116,7 +116,7 @@ module.exports = [
 
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
 
-- [browsersync](http://www.browsersync.io/)
+- [browsersync](http://www.browsersync.io/) not support post, respond files without extension as `application/octet-stream`
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/serve-here
