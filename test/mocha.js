@@ -51,7 +51,7 @@ describe('test terminal command `here`', () => {
             done();
         });
     });
-    it('`here -w` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 0 seconds after final change was taken`', done => {
+    it('`here -w` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: ready, reload in 0 seconds`', done => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '-w']);
         let stdoutCount = 0;
         here.stdout.on('data', data => {
@@ -62,7 +62,7 @@ describe('test terminal command `here`', () => {
                     assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
                     break;
                 case 2:
-                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: pages will be reloaded in 0 seconds after final change was taken\n$/.test(data));
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: ready, reload in 0 seconds\n$/.test(data));
                     here.kill();
                     done();
                     break;
@@ -73,7 +73,7 @@ describe('test terminal command `here`', () => {
             }
         });
     });
-    it('`here --watch 3` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: pages will be reloaded in 3 seconds after final change was taken`', done => {
+    it('`here --watch 3` should output `[??:??:??.???] server : listen http://*.*.*.*:*/` and `[??:??:??.???] watcher: ready, reload in 3 seconds`', done => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '--watch', '3']);
         let stdOutCount = 0;
         here.stdout.on('data', data => {
@@ -84,7 +84,7 @@ describe('test terminal command `here`', () => {
                     assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
                     break;
                 case 2:
-                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: pages will be reloaded in 3 seconds after final change was taken\n$/.test(data));
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: ready, reload in 0 seconds\n$/.test(data));
                     here.kill();
                     done();
                     break;
