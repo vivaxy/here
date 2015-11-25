@@ -84,7 +84,7 @@ describe('test terminal command `here`', () => {
                     assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] server : listen http:\/\/\d+\.\d+\.\d+\.\d+:\d+\/\n$/.test(data));
                     break;
                 case 2:
-                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: ready, reload in 0 seconds\n$/.test(data));
+                    assert.equal(true, /^\[\d{2}:\d{2}:\d{2}\.\d{3}\] watcher: ready, reload in 3 seconds\n$/.test(data));
                     here.kill();
                     done();
                     break;
