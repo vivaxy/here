@@ -8,20 +8,35 @@ const path = require('path');
 
 const readFile = require('../lib/read-file.js');
 
-module.exports = function* (next) {
+const NOT_FOUND_INDEX = 1;
+
+module.exports = function* (next) { // eslint-disable-line max-statements
+
     yield next;
+
     if (this.type === 'text/html') {
+
         let response = '';
         let body = this.body.toString('utf-8');
         let reloadJavascript = yield readFile(path.join(__dirname, '../res/reload.js'));
-        reloadJavascript = '<script>' + reloadJavascript + '</script>';
-        if (~body.indexOf('</head>')) {
+
+        reloadJavascript = `<script>${reloadJavascript}</script>`;
+
+        if (body.indexOf('</head>') !== NOT_FOUND_INDEX) {
+
             let section = body.split('</head>');
-            section.splice(1, 0, reloadJavascript + '</head>');
+
+            section.splice(1, 0, `${reloadJavascript}</head>`);
             response = section.join('');
+
         } else {
+
             response = body + reloadJavascript;
+
         }
+
         this.body = response;
+
     }
+
 };

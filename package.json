@@ -10,7 +10,8 @@
     "node": ">=4.0"
   },
   "scripts": {
-    "test": "mocha ./test/mocha.js"
+    "test": "mocha ./test/command.js",
+    "lint": "eslint ./index.js ./debug.js ./lib/*.js ./middleware/*.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^1.10.3",
     "mocha": "^2.1.0"
   },
   "dependencies": {

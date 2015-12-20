@@ -2,7 +2,9 @@
  * @since 2015-09-23 16:38
  * @author vivaxy
  */
+
 'use strict';
+
 const assert = require('assert');
 const childProcess = require('child_process');
 
