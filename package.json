@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "mocha ./test/command.js",
-    "lint": "eslint ./index.js ./debug.js ./lib/*.js ./middleware/*.js"
+    "lint": "eslint --fix ./index.js ./debug.js ./lib/*.js ./middleware/*.js"
   },
   "repository": {
     "type": "git",
