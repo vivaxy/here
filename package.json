@@ -10,8 +10,8 @@
     "node": ">=4.0"
   },
   "scripts": {
-    "test": "mocha ./test/command.js",
-    "lint": "eslint --fix ./index.js ./debug.js ./lib/*.js ./middleware/*.js"
+    "pretest": "eslint --fix ./index.js ./debug.js ./lib/*.js ./middleware/*.js",
+    "test": "mocha ./test/command.js"
   },
   "repository": {
     "type": "git",
