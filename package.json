@@ -10,7 +10,7 @@
     "node": ">=4.0"
   },
   "scripts": {
-    "pretest": "eslint .",
+    "precommit": "eslint .",
     "test": "mocha ./test/command.js"
   },
   "repository": {
@@ -39,6 +39,7 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^1.10.3",
+    "husky": "^0.10.2",
     "mocha": "^2.1.0"
   },
   "dependencies": {
