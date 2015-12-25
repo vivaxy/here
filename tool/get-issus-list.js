@@ -2,6 +2,7 @@
  * @since 2015-12-20 20:56
  * @author vivaxy
  */
+
 'use strict';
 
 var commentContainerList = document.querySelectorAll('.js-comment-container');
