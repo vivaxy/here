@@ -2,6 +2,7 @@ root = true
 
 [*]
 indent_style = space
+indent_size = 4
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
@@ -15,3 +16,6 @@ quote_type = single
 
 [*.{html,less,css,json}]
 quote_type = double
+
+[package.json]
+indent_size = 2
