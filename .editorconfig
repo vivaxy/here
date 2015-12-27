@@ -2,7 +2,6 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 4
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
@@ -11,8 +10,8 @@ curly_bracket_next_line = false
 spaces_around_operators = true
 indent_brace_style = 1tbs
 
-[*.{js}]
+[*.js]
 quote_type = single
 
-[*.{html,less}]
+[*.{html,less,css,json}]
 quote_type = double
