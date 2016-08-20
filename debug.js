@@ -6,8 +6,8 @@
  */
 'use strict';
 
-const config = require('./lib/config.js');
+const config = require('./lib/config');
 
 config.set('isDebug', true);
 
-require('./lib/application.js')();
+require('./lib/application')();

@@ -6,4 +6,4 @@
  */
 'use strict';
 
-require('./lib/application.js')();
+require('./lib/application')();
