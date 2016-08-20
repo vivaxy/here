@@ -4,7 +4,7 @@
  */
 'use strict';
 
-const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
+const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type');
 
 module.exports = function* (next) {
 
