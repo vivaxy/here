@@ -53,6 +53,14 @@ or
 
 default port is 3000
 
+#### switch protocol to https
+
+`here -S`
+
+or
+
+`here --ssl`
+
 #### specify server root directory
 
 `here -d test`
