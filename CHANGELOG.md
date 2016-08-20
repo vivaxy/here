@@ -1,3 +1,7 @@
+# v3.1.1
+
+- upgrade jade to pug
+
 # v3.1.0
 
 - add ssl support
