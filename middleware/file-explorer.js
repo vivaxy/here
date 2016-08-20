@@ -9,21 +9,21 @@ const path = require('path');
 const mime = require('mime');
 const log = require('log-util');
 
-const readFile = require('../lib/read-file.js');
-const readFolder = require('../lib/read-folder.js');
-const getFileStat = require('../lib/get-file-stat.js');
-const buildFileBrowser = require('../lib/build-file-list.js');
-const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
+const readFile = require('../lib/read-file');
+const readFolder = require('../lib/read-folder');
+const getFileStat = require('../lib/get-file-stat');
+const buildFileBrowser = require('../lib/build-file-list');
+const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type');
 
 const NOT_FOUNT_INDEX = -1;
 const INDEX_PAGE = 'index.html';
 
 module.exports = (absoluteWorkingDirectory) => {
 
-    return function* (next) { // eslint-disable-line max-statements
+    return function* (next) {
 
         // decode for chinese character
-        let requestPath = decodeURIComponent(this.request.path); // eslint-disable-line no-invalid-this
+        let requestPath = decodeURIComponent(this.request.path);
         let fullRequestPath = path.join(absoluteWorkingDirectory, requestPath);
         let stat = yield getFileStat(fullRequestPath);
 
@@ -33,18 +33,18 @@ module.exports = (absoluteWorkingDirectory) => {
 
             if (files.indexOf(INDEX_PAGE) !== NOT_FOUNT_INDEX) {
 
-                this.redirect(path.join(requestPath, INDEX_PAGE), '/'); // eslint-disable-line no-invalid-this
+                this.redirect(path.join(requestPath, INDEX_PAGE), '/');
 
             } else {
 
-                this.body = buildFileBrowser(files, requestPath, absoluteWorkingDirectory); // eslint-disable-line no-invalid-this, max-len
-                this.type = mime.lookup(INDEX_PAGE); // eslint-disable-line no-invalid-this
+                this.body = buildFileBrowser(files, requestPath, absoluteWorkingDirectory);
+                this.type = mime.lookup(INDEX_PAGE);
 
             }
 
         } else if (stat.isFile()) {
 
-            this.body = yield readFile(fullRequestPath); // eslint-disable-line no-invalid-this
+            this.body = yield readFile(fullRequestPath);
             let type = mime.lookup(fullRequestPath);
 
             if (path.extname(fullRequestPath) === '') {
@@ -53,8 +53,8 @@ module.exports = (absoluteWorkingDirectory) => {
 
             }
 
-            this.type = type; // eslint-disable-line no-invalid-this
-            log.debug('server :', this.request.method, requestPath, '->', type); // eslint-disable-line no-invalid-this
+            this.type = type;
+            log.debug('server :', this.request.method, requestPath, '->', type);
 
         }
 

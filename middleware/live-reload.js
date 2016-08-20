@@ -6,11 +6,11 @@
 
 const path = require('path');
 
-const readFile = require('../lib/read-file.js');
+const readFile = require('../lib/read-file');
 
 const NOT_FOUND_INDEX = 1;
 
-module.exports = function* (next) { // eslint-disable-line max-statements
+module.exports = function* (next) {
 
     yield next;
 
