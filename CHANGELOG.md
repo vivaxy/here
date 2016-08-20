@@ -1,3 +1,7 @@
+# v3.1.0
+
+- add ssl support
+
 # v3.0.1
 
 - remove usage report
