@@ -13,7 +13,7 @@
 
 local static server
 
-Everything start from `here`
+everything start from `here`
 
 ## feature
 
@@ -23,13 +23,15 @@ Everything start from `here`
 
 - live reload
 
-- open default browser after server launched
+- support https
 
 - add ip address to your server, which makes your server available to other devices
 
 - resolve get, post... every method into local files, for ajax
 
 - respond files without extension as `application/json` for ajax
+
+- open default browser after server launched
 
 - when the server is on, press `enter` will open the browser
 
@@ -101,22 +103,54 @@ or
 
 #### middleware support
 
-write `here.js` in current directory
+write `here.js` in server base directory
 
 ```
-'use strict';
+let db = {
+    tobi: {
+        name: 'tobi',
+        age: 21
+    },
+    loki: {
+        name: 'loki',
+        age: 26
+    },
+    jane: {
+        name: 'jane',
+        age: 18
+    }
+};
 
 module.exports = [
-    function* (next) {
-        console.log(this.request.path);
-        if (this.request.path === '/test') {
-            this.body = 'test';
-            return;
+    {
+        method: 'get',
+        path: '/pets',
+        data () {
+            let names = Object.keys(db);
+            return names.map((name) => {
+                return db[name];
+            });
         }
-        yield next;
+    },
+    {
+        method: 'get',
+        path: '/pets/:name',
+        data () {
+            let name = this.params.name;
+            let pet = db[name];
+            if (!pet) {
+                return {
+                    error: `cannot find pet ${name}`
+                };
+            } else {
+                return pet;
+            }
+        }
     }
 ];
 ```
+
+see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail
 
 ## some similar applications
 

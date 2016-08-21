@@ -6,31 +6,34 @@
 'use strict';
 
 const path = require('path');
-const log = require('log-util');
 const koaRoute = require('koa-router')();
 
-const server = require('../lib/server');
+const configKey = require('../constant/config');
 
-const app = server.server;
+const config = require('../lib/config');
 
-const absoluteWorkingDirectory = process.cwd();
-
-module.exports = function* (next) {
-
-    let file = path.join(absoluteWorkingDirectory, 'here.js');
-    Reflect.deleteProperty(require.cache, file);
+const loadRoutes = () => {
+    const directory = config.get(configKey.DIRECTORY);
+    const file = path.join(directory, 'here.js');
     let routeList = require(file);
-
     routeList.forEach((route) => {
-        koaRoute[route.method](route.path, function* (_next) {
-            this.body = Reflect.apply(route.data, this, arguments);
-            yield _next;
+        koaRoute[route.method](route.path, require('./log'), function* () {
+            this.body = route.data.apply(this, arguments);
         });
     });
+};
 
-    app.use(koaRoute.routes());
-    app.use(koaRoute.allowedMethods());
+module.exports = (server) => {
 
-    yield next;
+    loadRoutes();
+
+    server.use(koaRoute.routes());
+    server.use(koaRoute.allowedMethods());
+
+    return function* (next) {
+
+        yield next;
+
+    };
 
 };
