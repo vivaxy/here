@@ -21,7 +21,7 @@
         "no-caller": 2,
         "no-case-declarations": 2,
         "no-div-regex": 2,
-        "no-else-return": 2,
+        "no-else-return": 0,
         "no-empty-label": 2,
         "no-empty-pattern": 2,
         "no-eq-null": 2,
@@ -196,10 +196,11 @@
         "no-var": 2,
         "object-shorthand": 2,
         "prefer-arrow-callback": 2,
-        "prefer-reflect": 2,
+        "prefer-reflect": 0,
         "prefer-spread": 2,
         "prefer-template": 2,
-        "require-yield": 2
+        "require-yield": 0,
+        "no-unused-vars": 1
     },
     "env": {
         "es6": true,

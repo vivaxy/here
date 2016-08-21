@@ -1,16 +1,49 @@
 /**
- * @since 15-08-20 15:08
+ * @since 2016-03-02 18:05
  * @author vivaxy
  */
+
 'use strict';
 
+let db = {
+    tobi: {
+        name: 'tobi',
+        age: 21
+    },
+    loki: {
+        name: 'loki',
+        age: 26
+    },
+    jane: {
+        name: 'jane',
+        age: 18
+    }
+};
+
 module.exports = [
-    function* (next) {
-        console.log(this.request.path);
-        if (this.request.path === '/test') {
-            this.body = 'test';
-            return;
+    {
+        method: 'get',
+        path: '/pets',
+        data () {
+            let names = Object.keys(db);
+            return names.map((name) => {
+                return db[name];
+            });
         }
-        yield next;
+    },
+    {
+        method: 'get',
+        path: '/pets/:name',
+        data () {
+            let name = this.params.name;
+            let pet = db[name];
+            if (!pet) {
+                return {
+                    error: `cannot find pet ${name}`
+                };
+            } else {
+                return pet;
+            }
+        }
     }
 ];
