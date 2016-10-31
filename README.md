@@ -5,7 +5,6 @@
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
 [![Dependency Status][david-image]][david-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
 
 [![NPM][nodei-image]][nodei-url]
 
@@ -172,5 +171,3 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 [nodei-dl-image]: https://nodei.co/npm-dl/serve-here.png?height=3
 [nodei-url]: https://nodei.co/npm/serve-here/
 [nodei-image]: https://nodei.co/npm/serve-here.svg?downloads=true&downloadRank=true&stars=true
-[coveralls-image]: https://coveralls.io/repos/vivaxy/here/badge.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/github/vivaxy/here
