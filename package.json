@@ -11,7 +11,7 @@
   },
   "scripts": {
     "precommit": "eslint .",
-    "test": "mocha ./test/command.js"
+    "test": "mocha ./test/command.js --timeout 10000"
   },
   "repository": {
     "type": "git",
