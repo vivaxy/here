@@ -1,4 +1,6 @@
-#serve-*here*
+# serve-*here*
+
+![here](./assets/images/here.jpg)
 
 [![Build Status][travis-image]][travis-url]
 [![NPM Version][npm-version-image]][npm-url]
