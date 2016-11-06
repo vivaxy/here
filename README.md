@@ -8,10 +8,6 @@
 [![MIT License][license-image]][license-url]
 [![Dependency Status][david-image]][david-url]
 
-[![NPM][nodei-image]][nodei-url]
-
-[![NPM][nodei-dl-image]][nodei-url]
-
 local static server
 
 everything start from `here`
@@ -163,13 +159,10 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 
 [npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/serve-here
-[npm-downloads-image]: http://img.shields.io/npm/dm/serve-here.svg?style=flat-square
-[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[npm-downloads-image]: http://img.shields.io/npm/d/serve-here.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/serve-here.svg?style=flat-square
 [license-url]: LICENSE
 [travis-image]: https://img.shields.io/travis/vivaxy/here.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vivaxy/here
 [david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
 [david-url]: https://david-dm.org/vivaxy/here
-[nodei-dl-image]: https://nodei.co/npm-dl/serve-here.png?height=3
-[nodei-url]: https://nodei.co/npm/serve-here/
-[nodei-image]: https://nodei.co/npm/serve-here.svg?downloads=true&downloadRank=true&stars=true
