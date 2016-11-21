@@ -149,6 +149,10 @@ module.exports = [
 
 see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail
 
+## change log
+
+[CHANGELOG](CHANGELOG.md)
+
 ## some similar applications
 
 - [puer](https://www.npmjs.com/package/puer) not support post, respond files without extension as `application/octet-stream`
