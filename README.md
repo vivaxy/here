@@ -1,4 +1,4 @@
-# serve-*here*
+# SERVE-*HERE*
 
 ![here](./assets/images/here.jpg)
 
@@ -12,7 +12,7 @@ local static server
 
 everything start from `here`
 
-## feature
+## FEATURE
 
 - look up available port automatically, which means multiple instances without specifying port
 
@@ -32,15 +32,15 @@ everything start from `here`
 
 - when the server is on, press `enter` will open the browser
 
-## installation
+## INSTALLATION
 
 `[sudo] npm install -g serve-here`
 
-## usage
+## USAGE
 
 In your local folder, type `here` and it goes\!
 
-## advanced usage
+## ADVANCED USAGE
 
 #### specify port to 8888
 
@@ -149,11 +149,11 @@ module.exports = [
 
 see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail
 
-## change log
+## CHANGELOG
 
 [CHANGELOG](CHANGELOG.md)
 
-## some similar applications
+## SOME SIMILAR APPLICATIONS
 
 - [puer](https://www.npmjs.com/package/puer) not support post, respond files without extension as `application/octet-stream`
 
