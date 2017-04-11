@@ -1,4 +1,4 @@
-# SERVE-*HERE*
+# here
 
 ![here](./assets/images/here.jpg)
 
@@ -34,7 +34,7 @@ everything start from `here`
 
 ## INSTALLATION
 
-`[sudo] npm install -g serve-here`
+`[sudo] npm install -g @vivaxy/here`
 
 ## USAGE
 
@@ -161,10 +161,16 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 
 - [browsersync](http://www.browsersync.io/) not support post, respond files without extension as `application/octet-stream`
 
-[npm-version-image]: http://img.shields.io/npm/v/serve-here.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/serve-here
-[npm-downloads-image]: http://img.shields.io/npm/dt/serve-here.svg?style=flat-square
-[license-image]: http://img.shields.io/npm/l/serve-here.svg?style=flat-square
+## CONTRIBUTION
+
+### Publish Command
+
+`npm publish --access=public`
+
+[npm-version-image]: http://img.shields.io/npm/v/@vivaxy/here.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/@vivaxy/here
+[npm-downloads-image]: http://img.shields.io/npm/dt/@vivaxy/here.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/@vivaxy/here.svg?style=flat-square
 [license-url]: LICENSE
 [travis-image]: https://img.shields.io/travis/vivaxy/here.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vivaxy/here
