@@ -6,7 +6,6 @@
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
-[![Dependency Status][david-image]][david-url]
 
 local static server
 
@@ -174,5 +173,3 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 [license-url]: LICENSE
 [travis-image]: https://img.shields.io/travis/vivaxy/here.svg?style=flat-square
 [travis-url]: https://travis-ci.org/vivaxy/here
-[david-image]: http://img.shields.io/david/vivaxy/here.svg?style=flat-square
-[david-url]: https://david-dm.org/vivaxy/here
