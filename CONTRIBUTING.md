@@ -1,0 +1,3 @@
+# Publish
+
+`npm run release`
