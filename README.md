@@ -162,7 +162,7 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 
 ## Contributing
 
-[contributing](CONTRIBUTING.md)
+[Contributing](CONTRIBUTING.md)
 
 [npm-version-image]: http://img.shields.io/npm/v/@vivaxy/here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/@vivaxy/here
