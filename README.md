@@ -148,11 +148,7 @@ module.exports = [
 
 see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail
 
-## CHANGELOG
-
-[CHANGELOG](CHANGELOG.md)
-
-## SOME SIMILAR APPLICATIONS
+## Prior Art
 
 - [puer](https://www.npmjs.com/package/puer) not support post, respond files without extension as `application/octet-stream`
 
@@ -160,11 +156,13 @@ see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 
 - [browsersync](http://www.browsersync.io/) not support post, respond files without extension as `application/octet-stream`
 
-## CONTRIBUTION
+## Change Log
 
-### Publish Command
+[Change Log](CHANGELOG.md)
 
-`npm run release`
+## Contributing
+
+[contributing](CONTRIBUTING.md)
 
 [npm-version-image]: http://img.shields.io/npm/v/@vivaxy/here.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/@vivaxy/here
