@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/vivaxy/here/compare/v3.2.1...v3.2.2) (2017-12-28)
+
+
+### Bug Fixes
+
+* :lock:Fix an issue that users can browse outside the wd ([d50c567](https://github.com/vivaxy/here/commit/d50c567)), closes [#16](https://github.com/vivaxy/here/issues/16)
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/vivaxy/here/compare/v3.1.0...v3.2.1) (2017-04-11)
 
