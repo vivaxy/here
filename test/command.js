@@ -23,7 +23,7 @@ describe('test terminal command `here`', () => {
     });
     it(`\`here\` should output \`[??:??:??.???] ${logPrefix.SERVER} listen http://*.*.*.*:*/\``, (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND]);
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             data = data.toString();
             let regExp = `^\\[\\d{2}:\\d{2}:\\d{2}\\.\\d{3}\\] ${logPrefix.SERVER} listen http:\\/\\/\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+\\/\\n$`;
             assert.equal(true, new RegExp(regExp, 'g').test(data));
@@ -33,7 +33,7 @@ describe('test terminal command `here`', () => {
     });
     it('`here -v` should output `version`', (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '-v']);
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
             done();
@@ -41,7 +41,7 @@ describe('test terminal command `here`', () => {
     });
     it('`here --version` should output `version`', (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '--version']);
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             data = data.toString();
             assert.equal(packageJson.version + '\n', data);
             done();
@@ -49,7 +49,7 @@ describe('test terminal command `here`', () => {
     });
     it('`here -h` should output help', (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '-h']);
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             data = data.toString();
             assert.equal(true, !!~data.indexOf('Usage: index [options]') && !!~data.indexOf('Options:'));
             done();
@@ -58,7 +58,7 @@ describe('test terminal command `here`', () => {
     it(`\`here -w\` should output \`[??:??:??.???] ${logPrefix.SERVER} listen http://*.*.*.*:*/\` and \`[??:??:??.???] ${logPrefix.WATCH} ready, reload in 0 seconds\``, (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '-w']);
         let stdoutCount = 0;
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             stdoutCount++;
             data = data.toString();
             switch (stdoutCount) {
@@ -82,7 +82,7 @@ describe('test terminal command `here`', () => {
     it(`\`here --watch 3\` should output \`[??:??:??.???] ${logPrefix.SERVER} listen http://*.*.*.*:*/\` and \`[??:??:??.???] ${logPrefix.WATCH} ready, reload in 3 seconds\``, (done) => {
         here = spawn(NODE_COMMAND, [HERE_COMMAND, '--watch', '3']);
         let stdOutCount = 0;
-        here.stdout.on('data', data => {
+        here.stdout.on('data', (data) => {
             stdOutCount++;
             data = data.toString();
             switch (stdOutCount) {
@@ -101,26 +101,6 @@ describe('test terminal command `here`', () => {
                     done();
                     break;
             }
-        });
-    });
-    it(`\`here -S\` should output \`[??:??:??.???] ${logPrefix.SERVER} listen https://*.*.*.*:*/\``, (done) => {
-        here = spawn(NODE_COMMAND, [HERE_COMMAND, '-S']);
-        here.stdout.on('data', (data) => {
-            data = data.toString();
-            let regExp = `^\\[\\d{2}:\\d{2}:\\d{2}\\.\\d{3}\\] ${logPrefix.SERVER} listen https:\\/\\/\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+\\/\\n$`;
-            assert.equal(true, new RegExp(regExp).test(data));
-            here.kill();
-            done();
-        });
-    });
-    it(`\`here --ssl\` should output \`[??:??:??.???] ${logPrefix.SERVER} listen https://*.*.*.*:*/\``, (done) => {
-        here = spawn(NODE_COMMAND, [HERE_COMMAND, '--ssl']);
-        here.stdout.on('data', data => {
-            data = data.toString();
-            let regExp = `^\\[\\d{2}:\\d{2}:\\d{2}\\.\\d{3}\\] ${logPrefix.SERVER} listen https:\\/\\/\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+\\/\\n$`;
-            assert.equal(true, new RegExp(regExp).test(data));
-            here.kill();
-            done();
         });
     });
 });

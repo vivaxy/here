@@ -10,7 +10,6 @@ const log = require('log-util');
 const logPrefix = require('../constant/log-prefix');
 
 module.exports = function* (next) {
-
     const beginTime = new Date().getTime();
 
     const request = this.request;
@@ -21,5 +20,4 @@ module.exports = function* (next) {
     const endTime = new Date().getTime();
 
     log.verbose(logPrefix.TIME, `${endTime - beginTime}ms`);
-
 };
