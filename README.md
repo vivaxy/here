@@ -7,29 +7,29 @@
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
 
-local static server
+Local static server
 
-everything start from `here`
+Everything start from `here`.
 
 ## FEATURE
 
-- look up available port automatically, which means multiple instances without specifying port
+- Look up available port automatically, which means multiple instances without specifying port.
 
-- custom routes by scripting `here.js`
+- Custom routes by scripting `here.js`.
 
-- live reload
+- Live reload.
 
-- support https
+- Support https.
 
-- add ip address to your server, which makes your server available to other devices
+- Add ip address to your server, which makes your server available to other devices.
 
-- resolve get, post... every method into local files, for ajax
+- Resolve get, post... every method into local files, for ajax.
 
-- respond files without extension as `application/json` for ajax
+- Respond files without extension as `application/json` for ajax.
 
-- open default browser after server launched
+- Open default browser after server launched.
 
-- when the server is on, press `enter` will open the browser
+- When the server is on, press `enter` will open the browser.
 
 ## INSTALLATION
 
@@ -49,7 +49,7 @@ or
 
 `here --port 8888`
 
-default port is 3000
+Default port is 3000.
 
 #### switch protocol to https
 
@@ -67,7 +67,7 @@ or
 
 `here --directory test`
 
-default directory is `./`
+Default directory is `./`.
 
 #### watch file changes, once files changed, reload pages
 
@@ -77,9 +77,9 @@ or
 
 `here --watch`
 
-default interval is 0 second
+Default interval is 0 second.
 
-recommend to set reload interval to page reload time
+Recommend to set reload interval to page reload time.
 
 #### do not open the browser
 
@@ -99,7 +99,7 @@ or
 
 #### middleware support
 
-write `here.js` in server base directory
+Write `here.js` in server base directory.
 
 ```
 let db = {
@@ -146,7 +146,7 @@ module.exports = [
 ];
 ```
 
-see [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail
+See [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-router--Router+get%7Cput%7Cpost%7Cpatch%7Cdelete) for more detail.
 
 ## Prior Art
 
