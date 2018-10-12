@@ -9,6 +9,5 @@ const config = require('./lib/config.js');
 const configKeys = require('./constant/config.js');
 
 config.set(configKeys.IS_DEBUG, true);
-config.set(configKeys.GZIP, true);
 
 require('./lib/application')();

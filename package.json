@@ -7,7 +7,7 @@
     "here": "./index.js"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=8.0"
   },
   "scripts": {
     "test": "mocha ./test/command.js --timeout 10000",
