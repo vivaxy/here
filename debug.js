@@ -9,5 +9,6 @@
 const config = require('./lib/config');
 
 config.set('isDebug', true);
+config.set('gzip', true);
 
 require('./lib/application')();
