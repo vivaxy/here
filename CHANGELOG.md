@@ -6,14 +6,10 @@ All notable changes to this project will be documented in this file. See [standa
 # [3.3.0](https://github.com/vivaxy/here/compare/v3.2.2...v3.3.0) (2018-10-12)
 
 
-### Bug Fixes
-
-* **travis:** :bug:Drop support for node.js v6 and v7 ([74c277d](https://github.com/vivaxy/here/commit/74c277d))
-
-
 ### Features
 
 * **gzip:** :sparkles:Support gzip compression ([1fb8732](https://github.com/vivaxy/here/commit/1fb8732))
+* Drop support for node.js v6 and v7 ([74c277d](https://github.com/vivaxy/here/commit/74c277d))
 
 
 
