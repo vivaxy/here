@@ -3,21 +3,19 @@
  * @author vivaxy
  */
 
-'use strict';
-
 const path = require('path');
 const koaRoute = require('koa-router')();
 
-const configKey = require('../constant/config');
+const configKeys = require('../constant/config.js');
 
-const config = require('../lib/config');
+const config = require('../lib/config.js');
 
 const loadRoutes = () => {
-    const directory = config.get(configKey.DIRECTORY);
+    const directory = config.get(configKeys.DIRECTORY);
     const file = path.join(directory, 'here.js');
     const routeList = require(file);
     routeList.forEach((route) => {
-        koaRoute[route.method](route.path, require('./log'), function* () {
+        koaRoute[route.method](route.path, require('./log.js'), function* () {
             this.body = route.data.apply(this, arguments);
         });
     });

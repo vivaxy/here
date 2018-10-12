@@ -2,9 +2,8 @@
  * @since 2015-11-20 13:11
  * @author vivaxy
  */
-'use strict';
 
-const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type');
+const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
 module.exports = function* (next) {
     try {

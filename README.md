@@ -11,7 +11,7 @@ Local static server
 
 Everything start from `here`.
 
-## FEATURE
+## Feature
 
 - Look up available port automatically, which means multiple instances without specifying port.
 
@@ -31,17 +31,17 @@ Everything start from `here`.
 
 - When the server is on, press `enter` will open the browser.
 
-## INSTALLATION
+## Installation
 
 `[sudo] npm install -g @vivaxy/here`
 
-## USAGE
+## Usage
 
 In your local folder, type `here` and it goes\!
 
-## ADVANCED USAGE
+## Advanced Usage
 
-#### specify port to 8888
+#### Specify port to 8888
 
 `here -p 8888`
 
@@ -51,7 +51,7 @@ or
 
 Default port is 3000.
 
-#### switch protocol to https
+#### Switch protocol to https
 
 `here -S`
 
@@ -59,7 +59,15 @@ or
 
 `here --ssl`
 
-#### specify server root directory
+#### Open Gzip
+
+`here -G`
+
+or
+
+`here --gzip`
+
+#### Specify server root directory
 
 `here -d test`
 
@@ -69,7 +77,7 @@ or
 
 Default directory is `./`.
 
-#### watch file changes, once files changed, reload pages
+#### Watch file changes, once files changed, reload pages
 
 `here -w 3`
 
@@ -81,7 +89,7 @@ Default interval is 0 second.
 
 Recommend to set reload interval to page reload time.
 
-#### do not open the browser
+#### Do not open the browser
 
 `here -s`
 
@@ -89,7 +97,7 @@ or
 
 `here --silent`
 
-#### output log
+#### Output log
 
 `here -l`
 
@@ -97,52 +105,52 @@ or
 
 `here --log 0`
 
-#### middleware support
+#### Middleware support
 
 Write `here.js` in server base directory.
 
 ```
 let db = {
-    tobi: {
-        name: 'tobi',
-        age: 21
-    },
-    loki: {
-        name: 'loki',
-        age: 26
-    },
-    jane: {
-        name: 'jane',
-        age: 18
-    }
+  tobi: {
+    name: 'tobi',
+    age: 21
+  },
+  loki: {
+    name: 'loki',
+    age: 26
+  },
+  jane: {
+    name: 'jane',
+    age: 18
+  }
 };
 
 module.exports = [
-    {
-        method: 'get',
-        path: '/pets',
-        data () {
-            let names = Object.keys(db);
-            return names.map((name) => {
-                return db[name];
-            });
-        }
-    },
-    {
-        method: 'get',
-        path: '/pets/:name',
-        data () {
-            let name = this.params.name;
-            let pet = db[name];
-            if (!pet) {
-                return {
-                    error: `cannot find pet ${name}`
-                };
-            } else {
-                return pet;
-            }
-        }
+  {
+    method: 'get',
+    path: '/pets',
+    data () {
+      let names = Object.keys(db);
+      return names.map((name) => {
+        return db[name];
+      });
     }
+  },
+  {
+    method: 'get',
+    path: '/pets/:name',
+    data () {
+      let name = this.params.name;
+      let pet = db[name];
+      if (!pet) {
+        return {
+          error: `cannot find pet ${name}`
+        };
+      } else {
+        return pet;
+      }
+    }
+  }
 ];
 ```
 

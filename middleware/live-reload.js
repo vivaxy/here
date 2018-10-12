@@ -2,11 +2,10 @@
  * @since 2015-11-20 16:03
  * @author vivaxy
  */
-'use strict';
 
 const path = require('path');
 
-const readFile = require('../lib/read-file');
+const readFile = require('../lib/read-file.js');
 
 const NOT_FOUND_INDEX = 1;
 

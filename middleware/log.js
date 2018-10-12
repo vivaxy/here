@@ -3,11 +3,9 @@
  * @author vivaxy
  */
 
-'use strict';
-
 const log = require('log-util');
 
-const logPrefix = require('../constant/log-prefix');
+const logPrefix = require('../constant/log-prefix.js');
 
 module.exports = function* (next) {
     const beginTime = new Date().getTime();

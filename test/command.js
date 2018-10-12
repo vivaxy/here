@@ -3,13 +3,11 @@
  * @author vivaxy
  */
 
-'use strict';
-
 const assert = require('assert');
 const childProcess = require('child_process');
 
 const packageJson = require('../package.json');
-const logPrefix = require('../constant/log-prefix');
+const logPrefix = require('../constant/log-prefix.js');
 
 const spawn = childProcess.spawn;
 

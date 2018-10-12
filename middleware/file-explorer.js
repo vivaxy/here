@@ -2,28 +2,27 @@
  * @since 2015-11-20 13:11
  * @author vivaxy
  */
-'use strict';
 
 const path = require('path');
 
 const mime = require('mime');
 const log = require('log-util');
 
-const configKey = require('../constant/config');
-const logPrefix = require('../constant/log-prefix');
+const configKeys = require('../constant/config.js');
+const logPrefix = require('../constant/log-prefix.js');
 
-const config = require('../lib/config');
-const readFile = require('../lib/read-file');
-const readFolder = require('../lib/read-folder');
-const getFileStat = require('../lib/get-file-stat');
-const buildFileBrowser = require('../lib/build-file-list');
-const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type');
+const config = require('../lib/config.js');
+const readFile = require('../lib/read-file.js');
+const readFolder = require('../lib/read-folder.js');
+const getFileStat = require('../lib/get-file-stat.js');
+const buildFileBrowser = require('../lib/build-file-list.js');
+const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
 const NOT_FOUNT_INDEX = -1;
 const INDEX_PAGE = 'index.html';
 
 module.exports = function* (next) {
-    const directory = config.get(configKey.DIRECTORY);
+    const directory = config.get(configKeys.DIRECTORY);
 
     // decode for chinese character
     const requestPath = decodeURIComponent(this.request.path);

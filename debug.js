@@ -4,11 +4,11 @@
  * @since 2015-11-06 13:47
  * @author vivaxy
  */
-'use strict';
 
-const config = require('./lib/config');
+const config = require('./lib/config.js');
+const configKeys = require('./constant/config.js');
 
-config.set('isDebug', true);
-config.set('gzip', true);
+config.set(configKeys.IS_DEBUG, true);
+config.set(configKeys.GZIP, true);
 
 require('./lib/application')();

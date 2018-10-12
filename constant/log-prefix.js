@@ -3,12 +3,9 @@
  * @author vivaxy
  */
 
-'use strict';
-
-/* eslint-disable */
-exports.BROWSER  = ' browser:';
-exports.SERVER   = '  server:';
-exports.WATCH    = '   watch:';
+exports.BROWSER = ' browser:';
+exports.SERVER = '  server:';
+exports.WATCH = '   watch:';
 exports.RESPONSE = 'response:';
-exports.REQUEST  = ' request:';
-exports.TIME     = '    time:';
+exports.REQUEST = ' request:';
+exports.TIME = '    time:';

@@ -3,7 +3,6 @@
  * @since 2015-11-20 20:07
  * @author vivaxy
  */
-'use strict';
 
 // socket.io
 !function (e) {
