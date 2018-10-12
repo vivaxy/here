@@ -11,6 +11,8 @@ Local static server
 
 Everything start from `here`.
 
+Node.js >= 8.0
+
 ## Feature
 
 - Look up available port automatically, which means multiple instances without specifying port.

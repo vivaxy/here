@@ -3,6 +3,6 @@
  * @author vivaxy
  */
 
-module.exports = async(ctx, next) => {
+const compress = require('koa-compress');
 
-};
+module.exports = compress();
