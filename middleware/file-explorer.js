@@ -21,38 +21,38 @@ const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 const NOT_FOUNT_INDEX = -1;
 const INDEX_PAGE = 'index.html';
 
-module.exports = function* (next) {
-    const directory = config.get(configKeys.DIRECTORY);
+module.exports = async function(ctx, next) {
+  const directory = config.get(configKeys.DIRECTORY);
 
-    // decode for chinese character
-    const requestPath = decodeURIComponent(this.request.path);
-    const fullRequestPath = path.join(directory, requestPath);
-    // fix security issue
-    if (!fullRequestPath.startsWith(directory)) {
-        return yield next;
+  // decode for chinese character
+  const requestPath = decodeURIComponent(ctx.request.path);
+  const fullRequestPath = path.join(directory, requestPath);
+  // fix security issue
+  if (!fullRequestPath.startsWith(directory)) {
+    return await next();
+  }
+  const stat = await getFileStat(fullRequestPath);
+
+  if (stat.isDirectory()) {
+    const files = await readFolder(fullRequestPath);
+
+    if (files.indexOf(INDEX_PAGE) !== NOT_FOUNT_INDEX) {
+      ctx.redirect(path.join(requestPath, INDEX_PAGE), '/');
+    } else {
+      ctx.body = buildFileBrowser(files, requestPath, directory);
+      ctx.type = mime.lookup(INDEX_PAGE);
     }
-    const stat = yield getFileStat(fullRequestPath);
+  } else if (stat.isFile()) {
+    ctx.body = await readFile(fullRequestPath);
+    let type = mime.lookup(fullRequestPath);
 
-    if (stat.isDirectory()) {
-        const files = yield readFolder(fullRequestPath);
-
-        if (files.indexOf(INDEX_PAGE) !== NOT_FOUNT_INDEX) {
-            this.redirect(path.join(requestPath, INDEX_PAGE), '/');
-        } else {
-            this.body = buildFileBrowser(files, requestPath, directory);
-            this.type = mime.lookup(INDEX_PAGE);
-        }
-    } else if (stat.isFile()) {
-        this.body = yield readFile(fullRequestPath);
-        let type = mime.lookup(fullRequestPath);
-
-        if (path.extname(fullRequestPath) === '') {
-            type = FALLBACK_CONTENT_TYPE;
-        }
-
-        this.type = type;
-        log.verbose(logPrefix.RESPONSE, this.request.method, requestPath, 'as', type);
+    if (path.extname(fullRequestPath) === '') {
+      type = FALLBACK_CONTENT_TYPE;
     }
 
-    yield next;
+    ctx.type = type;
+    log.verbose(logPrefix.RESPONSE, ctx.request.method, requestPath, 'as', type);
+  }
+
+  await next();
 };

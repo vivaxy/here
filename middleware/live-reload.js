@@ -9,24 +9,24 @@ const readFile = require('../lib/read-file.js');
 
 const NOT_FOUND_INDEX = 1;
 
-module.exports = function* (next) {
-    yield next;
+module.exports = async function(ctx, next) {
+  await next();
 
-    if (this.type === 'text/html') {
-        let response = '';
-        const body = this.body.toString('utf-8');
-        const reloadJavascriptContent = yield readFile(path.join(__dirname, '../res/reload.js'));
+  if (ctx.type === 'text/html') {
+    let response = '';
+    const body = ctx.body.toString('utf-8');
+    const reloadJavascriptContent = await readFile(path.join(__dirname, '../res/reload.js'));
 
-        const reloadJavascript = `<script>${reloadJavascriptContent}</script>`;
+    const reloadJavascript = `<script>${reloadJavascriptContent}</script>`;
 
-        if (body.indexOf('</head>') !== NOT_FOUND_INDEX) {
-            const section = body.split('</head>');
+    if (body.indexOf('</head>') !== NOT_FOUND_INDEX) {
+      const section = body.split('</head>');
 
-            section.splice(1, 0, `${reloadJavascript}</head>`);
-            response = section.join('');
-        } else {
-            response = body + reloadJavascript;
-        }
-        this.body = response;
+      section.splice(1, 0, `${reloadJavascript}</head>`);
+      response = section.join('');
+    } else {
+      response = body + reloadJavascript;
     }
+    ctx.body = response;
+  }
 };

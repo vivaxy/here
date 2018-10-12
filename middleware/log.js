@@ -7,15 +7,15 @@ const log = require('log-util');
 
 const logPrefix = require('../constant/log-prefix.js');
 
-module.exports = function* (next) {
-    const beginTime = new Date().getTime();
+module.exports = async function(ctx, next) {
+  const beginTime = new Date().getTime();
 
-    const request = this.request;
-    log.verbose(logPrefix.REQUEST, `${request.method} ${request.path}`);
+  const request = ctx.request;
+  log.verbose(logPrefix.REQUEST, `${request.method} ${request.path}`);
 
-    yield next;
+  await next();
 
-    const endTime = new Date().getTime();
+  const endTime = new Date().getTime();
 
-    log.verbose(logPrefix.TIME, `${endTime - beginTime}ms`);
+  log.verbose(logPrefix.TIME, `${endTime - beginTime}ms`);
 };

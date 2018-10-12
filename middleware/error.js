@@ -5,12 +5,12 @@
 
 const FALLBACK_CONTENT_TYPE = require('../lib/fallback-content-type.js');
 
-module.exports = function* (next) {
-    try {
-        yield next;
-    } catch (e) {
-        this.status = 404;
-        this.body = e.stack;
-        this.type = FALLBACK_CONTENT_TYPE;
-    }
+module.exports = async function(ctx, next) {
+  try {
+    await next();
+  } catch (e) {
+    ctx.status = 404;
+    ctx.body = e.stack;
+    ctx.type = FALLBACK_CONTENT_TYPE;
+  }
 };
