@@ -51,6 +51,7 @@ module.exports = async function(ctx, next) {
     }
 
     ctx.type = type;
+    ctx.set('Access-Control-Allow-Origin', '*');
     log.verbose(logPrefix.RESPONSE, ctx.request.method, requestPath, 'as', type);
   }
 
