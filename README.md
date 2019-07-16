@@ -166,6 +166,8 @@ See [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 
 - [browsersync](http://www.browsersync.io/) not support post, respond files without extension as `application/octet-stream`
 
+- [serve](https://github.com/zeit/serve)
+
 ## Change Log
 
 [Change Log](CHANGELOG.md)
