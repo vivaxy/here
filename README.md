@@ -161,11 +161,8 @@ See [koa-router document](https://github.com/alexmingoia/koa-router#module_koa-r
 ## Prior Art
 
 - [puer](https://www.npmjs.com/package/puer) not support post, respond files without extension as `application/octet-stream`
-
 - [anywhere](https://www.npmjs.com/package/anywhere) not support post, and not support reload
-
 - [browsersync](http://www.browsersync.io/) not support post, respond files without extension as `application/octet-stream`
-
 - [serve](https://github.com/zeit/serve)
 
 ## Change Log
