@@ -11,11 +11,11 @@ module.exports = async function(ctx, next) {
   const beginTime = new Date().getTime();
 
   const request = ctx.request;
-  log.verbose(logPrefix.REQUEST, `${request.method} ${request.path}`);
+  log.info(logPrefix.REQUEST, `${request.method} ${request.path}`);
 
   await next();
 
   const endTime = new Date().getTime();
 
-  log.verbose(logPrefix.TIME, `${endTime - beginTime}ms`);
+  log.info(logPrefix.TIME, `${endTime - beginTime}ms`);
 };
