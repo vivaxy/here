@@ -51,7 +51,7 @@
     "debounce": "^1.0.0",
     "ip": "^1.1.0",
     "koa": "^2.5.3",
-    "koa-compress": "^3.0.0",
+    "koa-compress": "^4.0.0",
     "koa-router": "^8.0.0",
     "log-util": "^2.3.0",
     "mime": "^2.0.0",
