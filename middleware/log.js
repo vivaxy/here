@@ -2,7 +2,6 @@
  * @since 2016-08-21 10:13
  * @author vivaxy
  */
-
 const log = require('log-util');
 
 const logPrefix = require('../constant/log-prefix.js');

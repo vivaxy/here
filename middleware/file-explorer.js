@@ -2,7 +2,6 @@
  * @since 2015-11-20 13:11
  * @author vivaxy
  */
-
 const path = require('path');
 
 const mime = require('mime');
@@ -40,11 +39,11 @@ module.exports = async function(ctx, next) {
       ctx.redirect(path.join(requestPath, INDEX_PAGE), '/');
     } else {
       ctx.body = buildFileBrowser(files, requestPath, directory);
-      ctx.type = mime.lookup(INDEX_PAGE);
+      ctx.type = mime.getType(INDEX_PAGE);
     }
   } else if (stat.isFile()) {
     ctx.body = await readFile(fullRequestPath);
-    let type = mime.lookup(fullRequestPath);
+    let type = mime.getType(fullRequestPath);
 
     if (path.extname(fullRequestPath) === '') {
       type = FALLBACK_CONTENT_TYPE;
