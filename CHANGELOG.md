@@ -1,6 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [3.4.1](https://github.com/vivaxy/here/compare/v3.4.0...v3.4.1) (2021-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v7 ([342a2bb](https://github.com/vivaxy/here/commit/342a2bb9a3552a692a78479c6c61cfc04acb0ff2))
+* **deps:** update dependency koa-compress to v4 ([a74ddd4](https://github.com/vivaxy/here/commit/a74ddd4b2bad0aa74a4ecf663289cdf3d43633c1))
+* **deps:** update dependency koa-router to v8 ([27ceb5d](https://github.com/vivaxy/here/commit/27ceb5db4103afe28863a5a58e2ac85df8c2b1a3))
+* **deps:** update dependency mime to v2 ([af7298d](https://github.com/vivaxy/here/commit/af7298dcf13bbe2192c56d62ae840d12657af4d4))
+* :bug: fix file mime and commander options ([e419d5f](https://github.com/vivaxy/here/commit/e419d5f1662c55eae0cadc182d890ac0c22c24a6))
 
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/vivaxy/here/compare/v3.3.0...v3.4.0) (2019-07-10)
