@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/vivaxy/here/compare/v3.4.1...v3.5.0) (2024-05-23)
+
+
+### Features
+
+* **ip:** add ip option ([703d306](https://github.com/vivaxy/here/commit/703d306ef2ea4b36170f6b07e7752d320eb9f1f7))
+
 ### [3.4.1](https://github.com/vivaxy/here/compare/v3.4.0...v3.4.1) (2021-02-07)
 
 
