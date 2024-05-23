@@ -51,7 +51,7 @@ or
 
 `here --port 8888`
 
-Default port is 3000.
+Default port is `3000`.
 
 #### Switch protocol to https
 
@@ -98,6 +98,20 @@ Recommend to set reload interval to page reload time.
 or
 
 `here --silent`
+
+#### Specify open browser IP
+
+`here --ip localhost`
+
+or
+
+`here --ip private`
+
+or
+
+`here --ip public`
+
+Default IP is `public`.
 
 #### Output log
 

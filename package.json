@@ -67,5 +67,6 @@
     "**/**.{js,json,md}": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "npm@8.19.4"
 }
